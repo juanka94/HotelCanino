@@ -1,0 +1,96 @@
+   <?php 
+        $datos = $this->session->userdata('logged_user');
+?>
+   <!--header start-->
+    <header class="head-section">
+      <div class="navbar navbar-default navbar-static-top container">
+          <div class="navbar-header">
+              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
+              type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span><!--</button><img src="<?= base_url() ?>assets/user/img/logo1.jpg" alt="" width="110" height="110">-->
+          </div>
+
+          <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                  <li>
+                      <?= anchor('usuarios/index', 'Inicio')?>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                      "dropdown" data-toggle="dropdown" href="#">Servicios <i class="fa fa-angle-down"></i>
+                      </a>
+
+                      <ul class="dropdown-menu">
+                          <li >
+                              <a href="">Hospedaje</a>
+                          </li>
+
+                          <li>
+                              <a href="">Guarderia</a>
+                          </li>
+                           <li>
+                              <a href="">Entrenamiento</a>
+                          </li>
+
+                          <li class="dropdown-submenu">
+                              <a href="#" tabindex="-1">Mas opciones</a>
+
+                              <ul class="dropdown-menu">
+                                  <li>
+                                      <a href="#" tabindex="-1">2do nivel</a>
+                                  </li>
+
+                                  <li class="dropdown-submenu">
+                                      <a href="#">Mas</a>
+
+                                      <ul class="dropdown-menu">
+                                          <li>
+                                              <a href="#">3rd nivel</a>
+                                          </li>
+
+                                          <li>
+                                              <a href="#">3rd nivel</a>
+                                          </li>
+                                      </ul>
+                                  </li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </li>
+
+                  
+                  <li>
+                      <a href="<?= site_url()?>/usuarios/galeria">Galeria</a>
+                  </li>
+
+                  <li>
+                      <a href="<?= site_url()?>/usuarios/contacto">Contacto</a>
+                  </li>
+
+                  <li><input class="form-control search" placeholder=" Buscar" type="text"></li>
+                    <?php if (!$this->session->userdata('logged_user')){?>
+                  <li>
+                      <a href="<?= site_url()?>/usuarios/login"><i class="fa fa-user pr-10"></i> Iniciar Sesion</a>
+                  </li>
+                  <?php }else {?>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
+                      "dropdown" data-toggle="dropdown" href="#">Hola! <?php echo($datos->us_nombre);?></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                          <li>
+                              <a href="<?= site_url()?>/usuarios/perfil">Mi perfil</a>
+                          </li>
+
+                          <li>
+                              <a href="<?= site_url()?>/usuarios/logout">Cerrar Sesion</a>
+                          </li>
+
+                      </ul>
+                  </li>
+                  <?php } ?>
+              </ul>
+          </div>
+      </div>
+    </header>
+    <!--header end-->
