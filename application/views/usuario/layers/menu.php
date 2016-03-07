@@ -2,13 +2,13 @@
         $datos = $this->session->userdata('logged_user');
 ?>
    <!--header start-->
-    <header class="head-section">
-      <div class="navbar navbar-default navbar-static-top container">
-          <div class="navbar-header">
+<header class="head-section">
+  <div class="navbar navbar-default navbar-static-top container">
+    <div class="navbar-header">
               <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
               type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span><!--</button><img src="<?= base_url() ?>assets/user/img/logo1.jpg" alt="" width="110" height="110">-->
-          </div>
+              <span class="icon-bar"></span></button>
+    </div>
 
           <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -22,38 +22,14 @@
 
                       <ul class="dropdown-menu">
                           <li >
-                              <a href="">Hospedaje</a>
+                              <a href="<?= site_url()?>/usuarios/hospedaje">Hospedaje</a>
                           </li>
 
                           <li>
-                              <a href="">Guarderia</a>
+                              <a href="<?= site_url()?>/usuarios/guarderia">Guarderia</a>
                           </li>
                            <li>
-                              <a href="">Entrenamiento</a>
-                          </li>
-
-                          <li class="dropdown-submenu">
-                              <a href="#" tabindex="-1">Mas opciones</a>
-
-                              <ul class="dropdown-menu">
-                                  <li>
-                                      <a href="#" tabindex="-1">2do nivel</a>
-                                  </li>
-
-                                  <li class="dropdown-submenu">
-                                      <a href="#">Mas</a>
-
-                                      <ul class="dropdown-menu">
-                                          <li>
-                                              <a href="#">3rd nivel</a>
-                                          </li>
-
-                                          <li>
-                                              <a href="#">3rd nivel</a>
-                                          </li>
-                                      </ul>
-                                  </li>
-                              </ul>
+                              <a href="<?= site_url()?>/usuarios/entrenamiento">Entrenamiento</a>
                           </li>
                       </ul>
                   </li>
@@ -62,7 +38,9 @@
                   <li>
                       <a href="<?= site_url()?>/usuarios/galeria">Galeria</a>
                   </li>
-
+                   <li>
+                      <a href="<?= site_url()?>/usuarios/reservar">Reservar</a>
+                  </li>
                   <li>
                       <a href="<?= site_url()?>/usuarios/contacto">Contacto</a>
                   </li>
@@ -91,6 +69,6 @@
                   <?php } ?>
               </ul>
           </div>
-      </div>
-    </header>
+  </div>
+</header>
     <!--header end-->

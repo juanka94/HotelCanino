@@ -28,7 +28,7 @@
             <div class="form-wrapper">
             <?= form_open('usuarios/addusuario',$form) ?>
             <h2 class="form-signin-heading">Crear Usuario </h2> 
-</div> 
+
             <div class="login-wrap">
                 <input type="text" name="nom_usuario"  class="form-control" value="<?php echo @$_POST['nom_usuario']; ?>" placeholder="Nombre" autofocus>
                 <input type="text" name="ap_paterno"  class="form-control" value="<?php echo @$_POST['ap_paterno']; ?>" placeholder="A. Paterno" autofocus>

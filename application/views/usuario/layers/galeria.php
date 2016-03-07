@@ -1,5 +1,4 @@
- 
-    <!--breadcrumbs start-->
+<!--breadcrumbs start-->
     <div class="breadcrumbs">
       <div class="container">
         <div class="row">
@@ -12,16 +11,11 @@
             <ol class="breadcrumb pull-right">
               <li>
                 <a href="#">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  Pages
+                  Inicio
                 </a>
               </li>
               <li class="active">
-                Contacts
+                Galeria
               </li>
             </ol>
           </div>
@@ -33,10 +27,173 @@
 
 
     <!--container start-->
+<div class="container">
     <div class="container">
+        <div class="row  mar-b-30">
+        <div id="portfoliolist">
+            <div class="col-md-12">
 
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img1.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img1.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img2.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img2.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img3.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img3.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img4.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img4.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img5.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img5.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img6.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img6.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img7.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img7.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img8.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img8.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img9.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img9.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img10.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img10.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img12.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img12.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img13.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img13.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img14.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img14.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img15.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img15.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+            <div class="portfolio" >
+                <div class="portfolio-wrapper">
+                    <div class="portfolio-hover">
+                        <div class="image-caption">
+                            <a href="<?= base_url() ?>assets/user/img/portfolios/galeria/img16.jpg" class="label magnefig label-info icon" data-toggle="tooltip" data-placement="left" title="Zoom"><i class="fa fa-eye"></i></a>
+                        </div>
+                        <img src="<?= base_url() ?>assets/user/img/portfolios/galeria/img16.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+        </div>
+
+       </div>
+    </div>
 
       
 
+    </div>
     </div>
     <!--container end-->

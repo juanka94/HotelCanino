@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-lg-8 col-sm-8">
                     <ol class="breadcrumb pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Servicios</a></li>
                         <li class="active">Reservacion</li>
                     </ol>
                 </div>
@@ -65,6 +65,7 @@
                 <label>¿Esterilizado?</label>
                 <label class="radio-inline"><input type="radio" name="esterilizado" value="1">Si</label>
                 <label class="radio-inline"><input type="radio" name="esterilizado" value="0">No</label>
+                </br>
                 <label>¿A que hora come?</label>
                 <input type="text" name="hora_comida" id="input" class="form-control" value="">
                 <label>¿Recibe algun tratamiendo medico?</label></br>
@@ -118,12 +119,8 @@
                  <h3 id="total_redondo">Precio viaje sencillo:</h3>
                  <h3 id="total_sencillo">Precio viaje redondo:</h3>
                  <hr/>
-                <div class="checkbox">
-                     <label>
-                         <input type="checkbox" value="true" name="">
-                         Acepto Terminos y condiciones <a href="" data-toggle="modal" data-target="#myModal">leer</a>
-                     </label>
-                 </div>
+                 Al recervar acepta Terminos y Condiciones <a href="" data-toggle="modal" data-target="#myModal">leer</a>
+                 </br></br>
                 <?= form_submit('', 'reservar',$submit) ?>
                
                 </div>
@@ -161,7 +158,7 @@ El servicio de Hospedaje y Guardería NO INCLUYE: Servicio a domicilio, Baño de
 Nos reservamos el derecho de admisión por diferentes razones: de enfermedad, condición o  posibilidad de riesgo con el mismo perrito, otros huéspedes o con el personal del hotel mismo.</br>
 GRACIAS POR SU PREFERENCIA
 </p>
-      </div>
-    </div>
-  </div>
+</div>
+</div>/
+</div>
 </div>

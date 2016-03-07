@@ -288,6 +288,27 @@ class Administradores extends CI_Controller {
 		}
 	}
 
+	public function enviar_correo()
+	{
+		$us_id = $this->uri->segment(3);
+
+		$query = $this->administradores_model->ver_usuario($us_id);
+
+		foreach ($query as $key) {
+			$data['usuario'] = array(
+				'id' => $key->us_id,
+				'nombre'=> $key->us_nombre,
+				'paterno'=> $key->us_ap_paterno,
+				'materno'=> $key->us_ap_materno,
+				'correo' => $key->us_email
+				);
+		}
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/usuario/enviar_correo',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
 
 	//Funciones generar PDF
 

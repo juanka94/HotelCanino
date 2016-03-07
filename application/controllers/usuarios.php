@@ -425,6 +425,38 @@ class Usuarios extends CI_Controller {
 		$this->load->view('usuario/layers/footer');	
 	}
 
+	public function preguntas()
+	{
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/layers/preguntas');
+		$this->load->view('usuario/layers/footer');	
+	}
+
+	public function entrenamiento()
+	{
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/servicios/entrenamiento');
+		$this->load->view('usuario/layers/footer');	
+	}
+
+	public function guarderia()
+	{
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/servicios/guarderia');
+		$this->load->view('usuario/layers/footer');	
+	}
+
+	public function hospedaje()
+	{
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/servicios/hospedaje');
+		$this->load->view('usuario/layers/footer');	
+	}
+
 	
 }
 

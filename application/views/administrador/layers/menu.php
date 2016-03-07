@@ -60,6 +60,11 @@
                     </i><span class="menu-title">Inventario</span></a>
                        
                     </li>
+                     <li><a href="<?= site_url()?>/caja"><i class="fa fa-money fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Caja</span></a>
+                       
+                    </li>
                 </ul>
             </div>
         </nav>

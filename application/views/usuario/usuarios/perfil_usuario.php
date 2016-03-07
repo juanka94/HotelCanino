@@ -13,108 +13,74 @@
              $us_password=$value['us_password'];
           }
         ?>
-      <div class="container" style="margin-top:40px">
-        <div class="row">
-            <div>
-                <form class="form-horizontal" action="<?php echo base_url();?>index.php/usuarios/editar_usuario" method="POST">
-                    <fieldset>  
-                    <div class="control-group">
-                        <!-- Username -->
-                        <h1>Editar Registro</h1>
-                      <?php echo validation_errors(); ?>
-                        <label class="control-label"  for="username">Nombre</label>
-                        <div class="controls">
-                          <input type="text"  value="<?php echo($us_nombre);?>" id="name" name="us_nombre" placeholder="" class="form-control" >
-              
-                        </div>
-                      </div>
-                      
-                       <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">ap patern</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_ap_paterno);?>"  name="us_ap_paterno" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                       <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">ap mater</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_ap_materno);?>" name ="us_ap_materno" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                       <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">casa</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_tel_casa);?>"  name="us_tel_casa" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                       <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">cel</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_tel_cel);?>"  name="us_tel_cel" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                       <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">calle</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_dom_calle);?>"  name="us_dom_calle" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">localida</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_dom_localidad);?>"  name="us_dom_localidad" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">municipi</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_dom_calle);?>"  name="us_dom_municipio" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">estado</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_dom_estado);?>" name="us_dom_estado"  placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
-                      <div class="control-group">
-                        <!-- E-mail -->
-                        <label class="control-label" for="email">email</label>
-                        <div class="controls">
-                          <input type="text" value="<?php echo($us_email);?>"  name="us_email" placeholder="" class="form-control">
-                         
-                        </div>
-                      </div>
+        
 
-                        <!-- Password-->
-                        <label class="control-label" for="password">Nueva Contraseña</label>
-                        <div class="controls">
-                          <input type="password" value="<?php echo($us_password);?>" name="us_password" id="password" name="password" placeholder="" class="form-control">
-                         <p class="help-block">Contraseña actual <?php echo($us_password);?></p>
-                        </div>
-                        <div class="controls">
-                        </br>
-                          <button type="submit" class="btn btn-success">Guardar</button>
-                        </div>  
-                      </div>  
-                    </fieldset>
-                  </form>
+
+      <!--breadcrumbs start-->
+    <div class="breadcrumbs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-4">
+                    <h1>Editar usuario</h1>
+                </div>
+                <div class="col-lg-8 col-sm-8">
+                    <ol class="breadcrumb pull-right">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Usuarios</a></li>
+                        <li class="active">Perfil</li>
+                    </ol>
+                </div>
             </div>
         </div>
-      </div>
+    </div>
+    <!--breadcrumbs end-->
+    <?php 
+      $form = array('class' =>'form-signin wow fadeInUp');
+      $submit = array('class' =>'btn btn-lg btn-login btn-block');
+     ?>
+    <!--container start-->
+    <div class="login-bg">
+        <div class="container">
+        <?php echo validation_errors(); ?>
+
+
+            <div class="form-wrapper">
+            <?= form_open('usuarios/editar_usuario',$form) ?>
+            <h2 class="form-signin-heading">Editar Perfil </h2> 
+
+            <div class="login-wrap">
+                <label class="control-label"  for="username">Nombre</label>
+<input type="text"  value="<?php echo($us_nombre);?>" id="name" name="us_nombre" placeholder="" class="form-control" >
+<label class="control-label" for="email">ap patern</label>
+ <input type="text" value="<?php echo($us_ap_paterno);?>"  name="us_ap_paterno" placeholder="" class="form-control">
+<label class="control-label" for="email">ap mater</label>
+ <input type="text" value="<?php echo($us_ap_materno);?>" name ="us_ap_materno" placeholder="" class="form-control">
+ <label class="control-label" for="email">casa</label>
+<input type="text" value="<?php echo($us_tel_casa);?>"  name="us_tel_casa" placeholder="" class="form-control">
+<label class="control-label" for="email">cel</label>
+ <input type="text" value="<?php echo($us_tel_cel);?>"  name="us_tel_cel" placeholder="" class="form-control">
+<label class="control-label" for="email">calle</label>
+<input type="text" value="<?php echo($us_dom_calle);?>"  name="us_dom_calle" placeholder="" class="form-control">
+ <label class="control-label" for="email">localida</label>
+<input type="text" value="<?php echo($us_dom_localidad);?>"  name="us_dom_localidad" placeholder="" class="form-control">
+ <label class="control-label" for="email">municipio</label>
+ <input type="text" value="<?php echo($us_dom_municipio);?>"  name="us_dom_municipio" placeholder="" class="form-control">
+<label class="control-label" for="email">estado</label>
+<input type="text" value="<?php echo($us_dom_estado);?>" name="us_dom_estado"  placeholder="" class="form-control">
+ <label class="control-label" for="email">email</label>
+<input type="text" value="<?php echo($us_email);?>"  name="us_email" placeholder="" class="form-control">
+<label class="control-label" for="password">Nueva Contraseña</label>
+ <input type="password" value="<?php echo($us_password);?>" name="us_password" id="password" name="password" placeholder="" class="form-control">
+  <div class="registration">
+Contraseña actual <?php echo($us_password);?>
+
+                </div>
+
+            </div>
+ <?= form_submit('', 'Actualizar',$submit) ?>
+          <?php echo (form_close()); ?>
+          </div>
+        </div>
+    </div>
+    <!--container end-->
+

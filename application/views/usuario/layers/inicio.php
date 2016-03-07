@@ -1,100 +1,149 @@
- <div class="container">
-      <div class="row mar-b-50">
-        <div class="col-md-12">
-          <div class="text-center feature-head wow fadeInDown">
-            <h1 class="">
-              Brindamos los mejores servicios
-            </h1>
+<div></br></div>
+    <!--container start-->
+    <div class="container">
+      <div class="row">
+        <!--blog start-->
+        <div class="col-lg-9 ">
+        <div class="blog-item">
+            <div class="row">
+           
+              <div class="col-lg-12 col-sm-12">
 
-          </div>
+                <div class="video-container">
+                  <iframe width="854" height="480" src="https://www.youtube.com/embed/byo_-ubRn6c?autoplay=1" frameborder="0" allowfullscreen></iframe>
+                  </iframe>
+                </div>
 
 
-          <div class="feature-box">
-          
-            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
-              <div class="feature-box-heading">
-                <em>
-                <img src="<?= base_url() ?>assets/user/img/hotel.png" alt="" width="100" height="100">
-
-                </em>
-                <h4>
-                  <b>Hospedaje</b>
-                </h4>
               </div>
-              <p class="text-center">
-                Nuestras instalaciones cuentan con los mejores servicios de calidad para sus mascotas que puedan tener 
-                la mayor comodidad posible para que usted disfrute de sus vacaciones.
-              </p>
             </div>
-            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
-              <div class="feature-box-heading">
-                <em>
-                  <img src="<?= base_url() ?>assets/user/img/guarderia.png" alt="" width="100" height="100">
-                </em>
-                <h4>
-                  <b>Guarderia</b>
-                </h4>
+            <div class="row">
+              
+              <div class="col-lg-10 col-sm-10" align="justify">
+                <h1>
+                  <a href="blog-detail.html">
+                   LOS TRATAMOS COMO REYES
+                  </a>
+                </h1>
+            
+                 El Hotel Canino Reyes es un concepto único en pensión y cuidado para perritos en el estado de Colima, con nuestras instalaciones amplias, creadas y diseñadas para su comodidad, habitaciones desinfectadas, cama para cada huésped, personal capacitado,  vigilancia las 24hrs del día, alberca y áreas verdes equipadas para que se diviertan todo el día.
+                   </br></br>
+                  En el Hotel Canino Reyes  con su filosofía de siempre libres en las áreas verdes, les brindamos atención y cuidados personalizados, siempre supervisados con la oportunidad de que interactúen con otros perritos de su tamaño ya que solo entraran a sus habitaciones para dormir o tomar la siesta
+                </br>
               </div>
-              <p class="text-center">
-                Tambien contamos con el servicio de guarderia ara que usted pueda salir sin ninguna preocuacion a sus 
-                asuntos personas por que en hotel reyes los tratamos como reyes.
-              </p>
-            </div>
-            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
-              <div class="feature-box-heading">
-                <em>
-                  <img src="<?= base_url() ?>assets/user/img/entrenamiento.png" alt="" width="100" height="100">
-                </em>
-                <h4>
-                  <b>Entrenamiento</b>
-                </h4>
-              </div>
-              <p class="text-center">
-                Contamos con entrenadores altamente capacitados para que su mascota cuente con una mayor obediencia y diciplina.
-              </p>
             </div>
           </div>
+         
+          <div class="blog-item">
+            <div class="row">
+           
+              <div class="col-lg-12 col-sm-12">
+                <div class="blog-img">
+                  <img src="<?=base_url()  ?>assets/user/img/image1.jpg" alt=""/>
+                </div>
 
-          <!--feature end-->
+              </div>
+            </div>
+            <div class="row">
+              
+              <div class="col-lg-10 col-sm-10" align="justify">
+                <h1>
+                  <a href="<?= site_url()?>/usuarios/reservar">
+                   Ahora Puedes Reservar en linea!
+                  </a>
+                </h1>
+                <h4>Si realizas tu reservación con anticipación pordás encontrar los mejores precios!</h4>
+                 Nuestros precias cambian de acuerdo a la temporada, tamaño del perrito o cuidados especiales que tenga cada raza. 
+                </br></br>
+                <a href="<?=site_url()?>/usuarios/reservar" class="btn btn-primary">
+                  Reservar Ahora
+                </a>
+              </div>
+            </div>
+          </div>
+         
+        
+
         </div>
-      </div>
-    </div>
+
+        <div class="col-lg-3">
+          <div class="blog-side-item">
+            <div class="category">
+              <h3>
+                Servicios
+              </h3>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="<?= site_url()?>/usuarios/hospedaje">
+                    <i class="fa fa-angle-right pr-10">
+                    </i>
+                    Hospedaje
+                  </a>
+                </li>
+                <li>
+                  <a href="<?= site_url()?>/usuarios/guarderia">
+                    <i class="fa fa-angle-right pr-10">
+                    </i>
+                    Guarderia
+                  </a>
+                </li>
+                <li>
+                  <a href="<?= site_url()?>/usuarios/entrenamiento">
+                    <i class="fa fa-angle-right pr-10">
+                    </i>
+                    Entrenamiento
+                  </a>
+                </li>
+               
+              </ul>
+            </div>
+
+            <div class="blog-post">
+              <h3>
+                Publicidad
+              </h3>
+              <div class="media">
+                <a class="pull-left" href="javascript:;">
+                  <img class=" " src="<?=base_url() ?>assets/user/img/logos/logo22.jpg" alt="">
+                </a>
+                <div class="media-body" align="justify">
+                  <h5 class="media-heading">
+                    <a href="https://www.facebook.com/ganadera.vr/photos/a.954410697938641.1073741830.950485171664527/996956050350772/?type=3&theater" target="_blank">
+                      Paraiso Animal Reyes
+                    </a>
+                  </h5>
+                  Somos una empresa dedicada a crear el mejor recuerdo en la despedida
+                  de tu mascota.
+                </div>
+              </div>
+                <div class="media">
+                <a class="pull-left" href="javascript:;">
+                  <img class=" " src="<?=base_url() ?>assets/user/img/logos/logo22.jpg" alt="">
+                </a>
+                <div class="media-body" align="justify">
+                  <h5 class="media-heading">
+                    <a href="https://www.facebook.com/profile.php?id=100010425761386&fref=ts" target="_blank">
+                      Veterinaria Reyes
+                    </a>
+                  </h5>
+                  Somos una empresa dedicada a brindar el mejor tratamiento estetico
+                  y medico a tu mascota.          
+                </div>
+              </div>
+            </div>
+
+            <div class="tags">
+            </br>
+              <a href="https://www.facebook.com/photo.php?fbid=949706858428496&set=a.702300593169125.1073741826.100001675730448&type=3&theater" target="_blank"><img class=" " src="<?=base_url() ?>assets/user/img/logos/veterinaria.jpg" alt="" width="350" height="450"></a>
+            </div>
 
 
-    <!--property start-->
-    <div class="property gray-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 col-sm-6 text-center wow fadeInLeft">
-            <img src="<?= base_url() ?>assets/user/img/tab1.png" alt="">
-          </div>
-          <div class="col-lg-6 col-sm-6 wow fadeInRight">
-            <h1>
-              Mobile ready
-            </h1>
-            <hr>
-            <p>
-              <i class="fa fa-check fa-lg pr-10">
-              </i>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantiu.
-            </p>
-            <p>
-              <i class="fa fa-check fa-lg pr-10">
-              </i>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener. natus error sit voluptatem accusantiu.
-            </p>
-            <p>
-              <i class="fa fa-check fa-lg pr-10">
-              </i>
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ablic jiener.
-            </p>
-            <hr>
-            <a href="<?= site_url()?>/usuarios/reservar" class="btn btn-purchase">
-              Reserva Ahora!
-            </a>
           </div>
         </div>
+
+        <!--blog end-->
       </div>
+
     </div>
-    <!--property end-->
+    <!--container end-->
 
