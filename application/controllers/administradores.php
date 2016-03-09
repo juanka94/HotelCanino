@@ -9,6 +9,7 @@ class Administradores extends CI_Controller {
 		$this->load->model('administradores_model');
 		$this->load->model('usuarios_model');
 		$this->load->library('form_validation');
+		$this->load->helper('form');
 	}
 
 	public function index()
@@ -288,7 +289,7 @@ class Administradores extends CI_Controller {
 		}
 	}
 
-	public function enviar_correo()
+	public function enviar_correo_vista()
 	{
 		$us_id = $this->uri->segment(3);
 
@@ -303,6 +304,7 @@ class Administradores extends CI_Controller {
 				'correo' => $key->us_email
 				);
 		}
+
 		$this->load->view('administrador/layers/header');
 		$this->load->view('administrador/layers/menu');
 		$this->load->view('administrador/usuario/enviar_correo',$data);
@@ -310,7 +312,26 @@ class Administradores extends CI_Controller {
 	}
 
 
-	//Funciones generar PDF
+	public function enviar_correo_info()
+	{
+		$this->load->library('email');
+		$de_email= $this->input->post('de_email');
+		$para_email=$this->input->post('para_email');
+		$mensaje_email=$this->input->post('mensaje_email');
+
+		$this->email->from($de_email, 'Hotel Canino');
+		$this->email->to($para_email);
+		
+		$this->email->subject('Recordatorio Hotel Canino');
+		$this->email->message($mensaje_email);
+		
+		if($this->email->send()){
+			redirect('administradores/usuarios');
+		}else{
+			redirect('administradores/index');
+		}
+
+	}
 
 	
 }
