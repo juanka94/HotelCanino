@@ -9,7 +9,6 @@
     <link rel="apple-touch-icon" href="<?= base_url(); ?>assets/admin/images/icons/favicon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= base_url(); ?>assets/admin/images/icons/favicon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="<?= base_url(); ?>assets/admin/images/icons/favicon-114x114.png">
-    <link rel="stylesheet" href="<?= base_url()?>assets/jquery-ui-datapicker/jquery-ui.css" />
     <!--Loading bootstrap css-->
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
     <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
@@ -23,7 +22,9 @@
     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/zabuto_calendar.min.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/pace.css">
     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/jquery.news-ticker.css">
-     <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/jplist-custom.css">
+    <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/jplist-custom.css">
+    <!--Datapicker-->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/datetimepicker-master/jquery.datetimepicker.css"/>
 </head>
 <body>
     <div>

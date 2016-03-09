@@ -76,6 +76,20 @@ class Administradores_model extends CI_Model {
 		}
 		else return FALSE;
 	}
+
+	public function mas_id_usuario($id)
+	{
+		$this->db->select('mas_id');
+		$this->db->from('mascotas');
+		$this->db->where('mas_id_usuario', $id);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+	}
 //NUEVO FIN
 	public function reservacion($id)
 	{
@@ -516,6 +530,87 @@ class Administradores_model extends CI_Model {
 		$this->db->delete('usuarios', $id);
 		$this->db->limit(1);
 	}
+
+	public function usuarios($nombre)
+    {
+    	$this->db->select('*');
+    	$this->db->from('usuarios u');
+    	$this->db->like('u.us_nombre', $nombre);
+    	$this->db->or_like('u.us_ap_paterno',$nombre);
+    	$this->db->or_like('u.us_ap_materno',$nombre);
+
+    	$query = $this->db->get();
+
+    	if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+    }
+
+    public function last_user()
+    {
+    	$this->db->select('us_id');
+    	$this->db->from('usuarios');
+    	$this->db->order_by('us_id','desc');
+    	$this->db->limit(1);
+
+    	$query = $this->db->get();
+
+    	if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+    }
+
+    public function last_mascota()
+    {
+    	$this->db->select('mas_id');
+    	$this->db->from('mascotas');
+    	$this->db->order_by('mas_id','desc');
+    	$this->db->limit(1);
+
+    	$query = $this->db->get();
+
+    	if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+    }
+
+    public function last_reservacion()
+    {
+    	$this->db->select('res_id');
+    	$this->db->from('reservaciones');
+    	$this->db->order_by('res_id','desc');
+    	$this->db->limit(1);
+
+    	$query = $this->db->get();
+
+    	if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+    }
+
+    public function insertar_reservacion($data)
+    {
+    	if($this->db->insert('reservaciones',$data))
+			return true;
+		else		
+			return false;
+    }
+
+    public function insertar_mascotas_reservaciones($data)
+    {
+    	if($this->db->insert('mascotas_reservaciones',$data))
+			return true;
+		else		
+			return false;
+    }
 	//NUEVO
 	//funciones inventrio
 
@@ -677,6 +772,14 @@ class Administradores_model extends CI_Model {
 	public function insertar_cliente($data){
 
 		if($this->db->insert('usuarios',$data))
+			return true;
+		else		
+			return false;
+	}
+
+	public function insertar_mascota($data)
+	{
+		if($this->db->insert('mascotas',$data))
 			return true;
 		else		
 			return false;
