@@ -56,6 +56,7 @@
                                                 </table>
                                             </div>
                                         </div>
+                                        <a type="submit" class="btn btn-blue" href="<?= site_url(); ?>/reservaciones/buscar_usuario">Agregar reservación</a>
                                     </div>
                                 </div>
                             </div>     
