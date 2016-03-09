@@ -76,6 +76,20 @@ class Administradores_model extends CI_Model {
 		}
 		else return FALSE;
 	}
+
+	public function mas_id_usuario($id)
+	{
+		$this->db->select('mas_id');
+		$this->db->from('mascotas');
+		$this->db->where('mas_id_usuario', $id);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+	}
 //NUEVO FIN
 	public function reservacion($id)
 	{

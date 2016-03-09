@@ -10,11 +10,10 @@
 	<!--BEGIN TITLE & BREADCRUMB PAGE-->
 	<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
 		<div class="page-header pull-left">
-			<div class="page-title">
-				Inventario</div>
+			<div class="page-title">Usuarios</div>
 		</div>
 		<ol class="breadcrumb page-breadcrumb pull-right">
-			<li><i class="fa fa-home"></i>&nbsp;<a href="">Inventario</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+			<li><i class="fa fa-home"></i>&nbsp;<a href="">Usuarios</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 			<li class="hidden"><a href="#">Data Grid</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 			<li class="active">Lista de Usuarios</li>
 		</ol>
@@ -70,7 +69,7 @@
 															<p class="desc"><strong>Telefono celular</strong> <?=$key->us_tel_cel?></p>
 															<p class="desc"><strong>Domicilio</strong> <?=$key->us_dom_calle?> <?=$key->us_dom_localidad?> <?=$key->us_dom_municipio?> <?=$key->us_dom_estado?></p>
 															<ul class="list-inline pull-right">
-																<li><a class="btn btn-green btn-xs" href="<?=site_url()?>/<?=$key->us_id?>">Seleccionar</a></li>
+																<li><a class="btn btn-green btn-xs" href="<?=site_url()?>/reservaciones/form_reservacion/<?=$key->us_id?>">Seleccionar</a></li>
 															</ul>
 														</td>
 													</tr>
