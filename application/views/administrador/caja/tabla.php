@@ -23,30 +23,32 @@
                             <div class="panel-heading">Sistema de Entradas y Salidas de Efectivo</div>
                             <div class="panel-body">
                                 <table class="table table-hover table-bordered">
-                               
+                                <h3 align="right"><?=date('d/m/y')?></h3>
                                     <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre</th>
                                         <th>Monto</th>
-                                        <th>Status</th>
+                                        <th>Tipo</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                   
+                                    <!-- 1 entrada 2 salida -->
+                                    <?php 
+                                        $num=1;
+                                        foreach ($caja as $value => $key) { ?>
                                     <tr>
-                                        <td>1</td>
-                                        <td>Reservacion</td>
-                                        <td>500$</td>
-                                        <td><span class="label label-sm label-info">Entrada</span></td>
+                                        <td><?= $num?></td>
+                                        <td><?= $key->caja_nombre ?></td>
+                                        <td><?= $key->caja_monto ?></td>
+                                        <td> <?php if($key->caja_tipo==1){?>
+                                        <span class="label label-sm label-info">Entrada</span>
+                                        <?php }else{  ?>
+                                        <span class="label label-sm label-danger">Salida</span>
+                                        <?php } ?>
+                                        </td>  
                                     </tr>
-                                   
-                                    <tr>
-                                        <td>2</td>
-                                        <td>luz</td>
-                                        <td>250$</td>
-                                        <td><span class="label label-sm label-danger">Salida</span></td>
-                                    </tr>
+                                    <?php $num++; } ?>
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -55,12 +57,10 @@
                                         <th>TOTAL EN CAJA</th>
                                         <th>250$</th>    
                                     </tr>
-
                                     </tfoot>
 
                                 </table>
-                                <a type="submit" class="btn btn-info" href="">Agregar Entrada</a>
-                                <a type="submit" class="btn btn-danger" href="">Agregar Salida</a>
+                                <a type="submit" class="btn btn-primary" href="<?=site_url('caja/entradas_salidas'); ?>">Agregar Entrada o Salida de Efectivo</a>
                                 <a type="submit" class="btn btn-warning" href="">Cerrar Caja</a>
                             </div>
                         </div>

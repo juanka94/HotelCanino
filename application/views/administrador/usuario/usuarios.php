@@ -50,7 +50,7 @@
                                             <td><?= $key->us_ap_paterno ?></td>
                                             <td>
                                                 <a type="submit" class="btn btn-green btn-xs" href="<?= site_url(); ?>/administradores/ver_usuario/<?= $key->us_id?>">ver</a>
-                                                <a type="submit" class="btn btn-warning btn-xs" href="<?= site_url(); ?>/administradores/enviar_correo/<?= $key->us_id?>">Eviar Info</a>
+                                                <a type="submit" class="btn btn-warning btn-xs" href="<?= site_url(); ?>/administradores/enviar_correo_vista/<?= $key->us_id?>">Eviar Info</a>
                                                 <a type="submit" class="btn btn-blue btn-xs" href="<?= site_url(); ?>/administradores/modificar_usuario/<?= $key->us_id?>">Modificar</a>
                                                 <a type="submit" class="btn btn-red btn-xs" href="<?= site_url(); ?>/administradores/eliminar_usuario/<?= $key->us_id?>">Eliminar</a>
                                             </td>

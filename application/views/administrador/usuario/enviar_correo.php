@@ -34,31 +34,31 @@
                                 Enviar Recordatorio
                               </h3>
                               <div class="contact-form">
-                                <form role="form">
+                                <?= (form_open('administradores/enviar_correo_info')); ?>
                                   <div class="form-group">
                                     <label for="email">
                                       De :
                                     </label>
-                                    <input type="email" placeholder="" id="email" class="form-control" value="contacto@hotelcaninoreyes.com" disabled="disabled">
+                                    <input type="email" placeholder="" id="email" class="form-control" value="contacto@hotelcaninoreyes.com" disabled="disabled" name="de_email">
                                   </div>
                                   <div class="form-group">
                                     <label for="email">
                                       Para :
                                     </label>
-                                    <input type="email" placeholder="" id="email" class="form-control" value="<?=$usuario['correo']?>" disabled="disabled">
+                                    <input type="email" placeholder="" id="email" class="form-control" value="<?=$usuario['correo']?>" disabled="disabled" name="para_email">
                                   </div>
                                   <div class="form-group">
                                     <label for="">
                                       Mensaje
                                     </label>
-                                    <textarea placeholder="" rows="5" class="form-control">Buen día <?=$usuario['nombre']?> <?=$usuario['paterno']?> <?=$usuario['materno']?>.
+                                    <textarea placeholder="" rows="5" class="form-control" name="mensaje_email">Buen día <?=$usuario['nombre']?> <?=$usuario['paterno']?> <?=$usuario['materno']?>.
                                     
                                     </textarea>
                                   </div>
                                   <button class="btn btn-info" type="submit">
                                     Enviar
                                   </button>
-                                </form>
+                               <?=form_close();  ?>
 
                               </div>
                             </div>
