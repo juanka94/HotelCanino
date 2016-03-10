@@ -830,6 +830,22 @@ class Administradores_model extends CI_Model {
     $this->db->update('administradores', $data);   
 	}
 
+	public function buscar_mascotas($name)
+	{
+		$this->db->select('m.*, u.us_id, u.us_nombre, u.us_ap_paterno, u.us_ap_materno');
+		$this->db->from('mascotas m');
+		$this->db->join('usuarios u', 'us_id = mas_id_usuario');
+		$this->db->like('m.mas_nombre', $name);
+
+		$query = $this->db->get();
+
+    	if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+	}
+
 }
 
 /* End of file administradores.php */
