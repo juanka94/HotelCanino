@@ -218,7 +218,8 @@
                                                             } ?>
                                                             <p class="like col-md-3"></p>
                                                             <ul class="list-inline pull-right">
-                                                                <li></li>
+                                                                <li><a type="submit" class="btn btn-orange btn-sm" href="<?= site_url(); ?>/administradores/form_mascota2/<?=$key['id']?>">Modificar</a></li>
+                                                                <li><a type="submit" class="btn btn-red btn-sm" href="<?= site_url(); ?>/administradores/eliminar_mascota/<?=$key['id']?>/<?=$usuario['id']?>">Eliminar</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>

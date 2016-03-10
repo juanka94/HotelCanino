@@ -99,11 +99,42 @@ class Administradores extends CI_Controller {
 		$this->load->view('administrador/layers/footer');
 	}
 
+	public function form_mascota2()
+	{
+		$mas_id = $this->uri->segment(3);
+
+		$query = $this->administradores_model->ver_mascota($mas_id);
+
+		foreach ($query as $key) {
+			$data['mascota'] = array(
+				'id' => $key->mas_id,
+				'nombre'=> $key->mas_nombre,
+				'size'=> $key->mas_size,
+				'raza'=> $key->mas_raza,
+				'genero'=> $key->mas_genero,
+				'color'=> $key->mas_color,
+				'edad'=> $key->mas_edad,
+				'hora_comida'=> $key->mas_hora_comida,
+				'esterilizado'=> $key->mas_esterilizado,
+				'agresivo'=> $key->mas_agresivo,
+				'medicamento'=> $key->mas_medicamento,
+				'observaciones'=> $key->mas_observaciones,
+				'id_us' => $key->mas_id_usuario
+			);
+		}
+
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/usuario/form_mascota2',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
 	public function agregar_mascota()
 	{
 		$insert = array(
 			'mas_nombre' => $this->input->post('nombre'),
 			'mas_size' => $this->input->post('tamaño'),
+			'mas_raza' => $this->input->post('raza'),
 			'mas_genero' => $this->input->post('sexo'),
 			'mas_color' => $this->input->post('color'),
 			'mas_edad' => $this->input->post('edad'),
@@ -118,6 +149,41 @@ class Administradores extends CI_Controller {
 		$this->administradores_model->insertar_mascota($insert);
 
 		redirect('administradores/ver_usuario/'.$insert['mas_id_usuario']);
+	}
+
+	public function modificar_mascota()
+	{
+		$update = array(
+			'mas_nombre' => $this->input->post('nombre'),
+			'mas_size' => $this->input->post('tamaño'),
+			'mas_raza' => $this->input->post('raza'),
+			'mas_genero' => $this->input->post('sexo'),
+			'mas_color' => $this->input->post('color'),
+			'mas_edad' => $this->input->post('edad'),
+			'mas_hora_comida' => $this->input->post('comida'),
+			'mas_esterilizado' => $this->input->post('esterlilizado'),
+			'mas_agresivo' => $this->input->post('agresivo'),
+			'mas_medicamento' => $this->input->post('medicamento'),
+			'mas_observaciones' => $this->input->post('observaciones'),
+		);
+
+		$mas_id = $this->input->post('mas_id');
+
+		$this->administradores_model->update_mascota($mas_id, $update);
+
+		$us_id = $this->input->post('us_id');
+
+		redirect('administradores/ver_usuario/'.$us_id);
+	}
+
+	public function eliminar_mascota()
+	{
+		$data['mas_id'] = $this->uri->segment(3);
+		$us_id = $this->uri->segment(4);
+
+		$this->administradores_model->eliminar_mascota($data);
+
+		redirect('administradores/ver_usuario/'.$us_id);
 	}
 
 	public function upgrade()
