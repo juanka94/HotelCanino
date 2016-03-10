@@ -37,7 +37,6 @@
                                     <div id="generalTabContent" class="tab-content">
                                         <div id="tab-edit" class="tab-pane fade in active">
                                             <?= form_open('',$form) ?>
-
                                             <h3>Ver Cliente</h3>
                                             <div class="form-group"><?= (form_label('Nombre','',$label));  ?>
                                                 <div class="col-sm-9 controls">
@@ -147,7 +146,6 @@
                                                         else{?>
                                                         <div class="col-xs-4">
                                                             <input type="text" name="estado"  class="form-control" value="Nuevo" disabled>
-                                                            <a type="submit" class="btn btn-green" href="<?= site_url(); ?>/administradores/upgrade/<?=$usuario['id']?>">Cambiar</a>
                                                         </div>
                                                         <?php } ?>
                                                     </div>
@@ -155,6 +153,7 @@
                                             </div>
                                             <hr/>
                                             <?= form_close(); ?>
+                                            <a type="submit" class="btn btn-green" href="<?= site_url(); ?>/administradores/form_mascota/<?=$usuario['id']?>">Agregar mascota</a>
                                         </div>
                                     </div>
                                 </div>
@@ -219,7 +218,8 @@
                                                             } ?>
                                                             <p class="like col-md-3"></p>
                                                             <ul class="list-inline pull-right">
-                                                                <li></li>
+                                                                <li><a type="submit" class="btn btn-orange btn-sm" href="<?= site_url(); ?>/administradores/form_mascota2/<?=$key['id']?>">Modificar</a></li>
+                                                                <li><a type="submit" class="btn btn-red btn-sm" href="<?= site_url(); ?>/administradores/eliminar_mascota/<?=$key['id']?>/<?=$usuario['id']?>">Eliminar</a></li>
                                                             </ul>
                                                         </td>
                                                     </tr>

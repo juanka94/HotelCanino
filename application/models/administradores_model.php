@@ -500,6 +500,17 @@ class Administradores_model extends CI_Model {
 		else return FALSE;
 	}
 
+		public function ver_mascota($id)
+	{
+		$query = $this->db->get_where('mascotas', array('mas_id' => $id));
+
+		if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+	}
+
 	public function us_mascota($id)
 	{
 		$query = $this->db->get_where('mascotas', array('mas_id_usuario' => $id));
@@ -525,9 +536,21 @@ class Administradores_model extends CI_Model {
 		$this->db->update('usuarios', $data);
 	}
 
+	public function update_mascota($id, $data)
+	{
+		$this->db->where('mas_id', $id);
+		$this->db->update('mascotas', $data);
+	}
+
 	public function eliminar_usuario($id)
 	{
 		$this->db->delete('usuarios', $id);
+		$this->db->limit(1);
+	}
+
+	public function eliminar_mascota($id)
+	{
+		$this->db->delete('mascotas', $id);
 		$this->db->limit(1);
 	}
 
