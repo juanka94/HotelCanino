@@ -132,9 +132,190 @@ class Reservaciones extends CI_Controller {
 
 		$this->administradores_model->activar($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/');
+		header('Location: http://localhost/HotelCanino/index.php/habitaciones/');
+	}
+
+	public function buscar_usuario()
+	{
+		$data['resultado'] = TRUE;
+
+		$name = $this->input->post('nombre');
+
+		if (!$name) {
+			$name = '';
+		}
+
+		$data['usuarios'] = $this->administradores_model->usuarios($name);
+
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/reservaciones/buscar_usuario',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
+	public function crear_cliente()
+	{
+		if(!$this->session->userdata('logged_user')){
+			redirect('administradores/login');
+		}else{
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/reservaciones/crear_cliente');
+		$this->load->view('administrador/layers/footer');
+		}
+	}
+
+	public function add_cliente()
+	{
+		if(!empty($_POST)) {
+			$insert = array(
+				'us_nombre'=> $this->input->post('nom_usuario'),
+				'us_ap_paterno'=> $this->input->post('ap_paterno'),
+				'us_ap_materno'=> $this->input->post('ap_materno'),
+				'us_tel_casa'=> $this->input->post('tel_casa'),
+				'us_tel_cel'=> $this->input->post('tel_celular'),
+				'us_email'=> $this->input->post('email'),
+				'us_password'=> $this->input->post('password'),
+				'us_dom_calle'=> $this->input->post('dom_calle'),
+				'us_dom_localidad'=> $this->input->post('localidad'),
+				'us_dom_municipio'=> $this->input->post('municipio'),
+				'us_dom_estado'=> $this->input->post('estado')
+				
+				);
+		}
+		
+		$this->administradores_model->insertar_cliente($insert);
+
+		$query = $this->administradores_model->last_user();
+		
+		foreach ($query as $key) {
+			$data['us_id'] = $key;
+		}
+
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/reservaciones/form_mascota',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
+	public function agregar_mascota()
+	{
+		$insert = array(
+			'mas_nombre' => $this->input->post('nombre'),
+			'mas_size' => $this->input->post('tamaño'),
+			'mas_genero' => $this->input->post('sexo'),
+			'mas_color' => $this->input->post('color'),
+			'mas_edad' => $this->input->post('edad'),
+			'mas_hora_comida' => $this->input->post('comida'),
+			'mas_esterilizado' => $this->input->post('esterlilizado'),
+			'mas_agresivo' => $this->input->post('agresivo'),
+			'mas_medicamento' => $this->input->post('medicamento'),
+			'mas_observaciones' => $this->input->post('observaciones'),
+			'mas_id_usuario' => $this->input->post('us_id')
+		);
+
+		$this->administradores_model->insertar_mascota($insert);
+
+		$query = $this->administradores_model->last_mascota();
+
+		foreach ($query as $key) {
+			$mascota['mas_res_id_mas'] = $key->mas_id;
+		}
+
+		$usuario = $insert['mas_id_usuario'];
+
+		$insert2 = array(
+			'res_fecha_in' => $this->input->post('fecha_in'),
+			'res_fecha_out' => $this->input->post('fecha_out'),
+			'res_status' => 0,
+			'res_no_habitacion' => 0,
+			'res_id_usuario' => $usuario
+		);		
+
+		$this->administradores_model->insertar_reservacion($insert2);
+
+		$query = $this->administradores_model->last_reservacion();
+
+		foreach ($query as $key) {
+			$mascota['mas_res_id_res'] = $key->res_id;
+		}
+
+		$this->administradores_model->insertar_mascotas_reservaciones($mascota);
+
+		redirect('/administradores','refresh');
+	}
+
+	public function form_reservacion()
+	{
+		$data['us_id'] = $this->uri->segment(3);
+
+		$query = $this->administradores_model->mas_id_usuario($data['us_id']);
+
+		$id_mascota = array();
+
+		foreach ($query as $key => $value) {
+			$id_mascota[] = $value->mas_id;
+		}
+
+		$query = $this->administradores_model->res_mascota($id_mascota);
+
+		$num = 0;
+
+		foreach ($query as $key) {
+			$data['mascota'][$num] = array(
+				'id' => $key->mas_id,
+				'nombre'=> $key->mas_nombre,
+				'size'=> $key->mas_size,
+				'raza'=> $key->mas_raza,
+				'genero'=> $key->mas_genero,
+				'color'=> $key->mas_color,
+				'edad'=> $key->mas_edad,
+				'hora_comida'=> $key->mas_hora_comida,
+				'esterilizado'=> $key->mas_esterilizado,
+				'agresivo'=> $key->mas_agresivo,
+				'medicamento'=> $key->mas_medicamento,
+				'observaciones'=> $key->mas_observaciones,
+			);
+			$num++;
+		}
+
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/reservaciones/form_reservacion',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
+	public function agregar_reservacion()
+	{
+		$insert = array(
+			'res_fecha_in' => $this->input->post('fecha_in'),
+			'res_fecha_out' => $this->input->post('fecha_out'),
+			'res_status' => 0,
+			'res_no_habitacion' => 0,
+			'res_id_usuario' => $this->input->post('us_id')
+		);
+
+		$this->administradores_model->insertar_reservacion($insert);
+
+		$query = $this->administradores_model->last_reservacion();
+
+		foreach ($query as $key) {
+			$data['mas_res_id_res'] = $key->res_id;
+		}
+
+		for ($i=0; $i < 3; $i++) { 
+
+			$data['mas_res_id_mas'] = $this->input->post('mascota'.$i);
+
+			if ($data['mas_res_id_mas']) {
+				$this->administradores_model->insertar_mascotas_reservaciones($data);
+			}
+		}
+
+		redirect('/administradores','refresh');
+
 	}
 }
 
-/* End of file reservasiones */
-/* Location: ./application/controllers/reservasiones */
+/* End of file reservaciones */
+/* Location: ./application/controllers/reservaciones */

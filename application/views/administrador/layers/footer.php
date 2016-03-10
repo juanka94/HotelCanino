@@ -9,6 +9,24 @@
             <!--END PAGE WRAPPER-->
         </div>
     </div>
+
+    <!--Datapicker-->
+    <script src="<?= base_url() ?>assets/datetimepicker-master/jquery.js"></script>
+    <script src="<?= base_url() ?>assets/datetimepicker-master/build/jquery.datetimepicker.full.js"></script>
+    <script>
+
+        $.datetimepicker.setLocale('es'); 
+
+        $('#datetimepicker_fecha_in').datetimepicker({
+            allowTimes:['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30','13:00','13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30']
+        });
+
+        $('#datetimepicker_fecha_out').datetimepicker({
+            allowTimes:['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30','13:00','13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30']
+        });
+        
+    </script>
+
     <script src="<?= base_url(); ?>assets/admin/script/jquery-1.10.2.min.js"></script>
     <script src="<?= base_url(); ?>assets/admin/script/jquery-migrate-1.2.1.min.js"></script>
     <script src="<?= base_url(); ?>assets/admin/script/jquery-ui.js"></script>
@@ -36,8 +54,6 @@
     <script src="<?= base_url(); ?>assets/admin/script/jquery.flot.spline.js"></script>
     <script src="<?= base_url(); ?>assets/admin/script/zabuto_calendar.min.js"></script>
     <script src="<?= base_url(); ?>assets/admin/script/index.js"></script>
-    <script src="<?= base_url()?>assets/jquery-ui-datapicker/external/jquery/jquery.js"></script>
-    <script src="<?= base_url()?>assets/jquery-ui-datapicker/jquery-ui.js"></script> 
     <!--LOADING SCRIPTS FOR CHARTS-->
     <script src="<?= base_url(); ?>assets/admin/script/highcharts.js"></script>
     <script src="<?= base_url(); ?>assets/admin/script/data.js"></script>
@@ -61,8 +77,6 @@
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-145464-12', 'auto');
         ga('send', 'pageview');
-
-
-</script>
+    </script>
 </body>
 </html>
