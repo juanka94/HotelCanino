@@ -33,7 +33,7 @@
                 <ul id="side-menu" class="nav">
                     
                      <div class="clearfix"></div>
-                    <li><a href="<?= site_url()?>/administradores/index"><i class="fa fa-paw fa-fw">
+                    <li><a href="<?= site_url()?>/administradores/index"><i class="fa fa-table fa-fw">
                         <div class="icon-bg bg-pink"></div>
                     </i><span class="menu-title">Reservaciones</span></a>
                     
@@ -49,6 +49,13 @@
                     </i><span class="menu-title">Clientes</span></a>
                           
                     </li>
+
+                    <li><a href="<?= site_url()?>/mascotas"><i class="fa fa-paw fa-fw">
+                        <div class="icon-bg bg-orange"></div>
+                    </i><span class="menu-title">Mascotas</span></a>
+                       
+                    </li>
+
                     <li><a href="<?= site_url()?>/administradores/crear_admin"><i class="fa fa-user fa-fw">
                         <div class="icon-bg bg-blue"></div>
                     </i><span class="menu-title">Usuarios Admin</span></a>
@@ -60,7 +67,7 @@
                     </i><span class="menu-title">Inventario</span></a>
                        
                     </li>
-                     <li><a href="<?= site_url()?>/caja"><i class="fa fa-money fa-fw">
+                    <li><a href="<?= site_url()?>/caja"><i class="fa fa-money fa-fw">
                         <div class="icon-bg bg-orange"></div>
                     </i><span class="menu-title">Caja</span></a>
                        
