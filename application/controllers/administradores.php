@@ -89,13 +89,44 @@ class Administradores extends CI_Controller {
 		$this->load->view('administrador/layers/footer');
 	}
 
+	public function form_mascota()
+	{
+		$data['us_id'] = $this->uri->segment(3);
+
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/usuario/form_mascota',$data);
+		$this->load->view('administrador/layers/footer');
+	}
+
+	public function agregar_mascota()
+	{
+		$insert = array(
+			'mas_nombre' => $this->input->post('nombre'),
+			'mas_size' => $this->input->post('tamaño'),
+			'mas_genero' => $this->input->post('sexo'),
+			'mas_color' => $this->input->post('color'),
+			'mas_edad' => $this->input->post('edad'),
+			'mas_hora_comida' => $this->input->post('comida'),
+			'mas_esterilizado' => $this->input->post('esterlilizado'),
+			'mas_agresivo' => $this->input->post('agresivo'),
+			'mas_medicamento' => $this->input->post('medicamento'),
+			'mas_observaciones' => $this->input->post('observaciones'),
+			'mas_id_usuario' => $this->input->post('us_id')
+		);
+
+		$this->administradores_model->insertar_mascota($insert);
+
+		redirect('administradores/ver_usuario/'.$insert['mas_id_usuario']);
+	}
+
 	public function upgrade()
 	{
 		$us_id = $this->uri->segment(3);
 
 		$query = $this->administradores_model->upgrade($us_id);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/administradores/ver_usuario/'.$us_id);	
+		header('Location: http://localhost/HotelCanino/index.php/administradores/ver_usuario/'.$us_id);	
 	}
 
 	public function modificar_usuario()
@@ -149,7 +180,7 @@ class Administradores extends CI_Controller {
 
 		$this->administradores_model->update_usuario($us_id, $data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/administradores/ver_usuario/'.$us_id);
+		header('Location: http://localhost/HotelCanino/index.php/administradores/ver_usuario/'.$us_id);
 	}
 
 	public function eliminar_usuario()
@@ -158,7 +189,7 @@ class Administradores extends CI_Controller {
 
 		$this->administradores_model->eliminar_usuario($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/administradores/Usuarios');
+		header('Location: http://localhost/HotelCanino/index.php/administradores/Usuarios');
 	}
 	//NUEVO
 	public function crear_admin()
