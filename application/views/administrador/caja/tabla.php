@@ -23,7 +23,7 @@
                             <div class="panel-heading">Sistema de Entradas y Salidas de Efectivo</div>
                             <div class="panel-body">
                                 <table class="table table-hover table-bordered">
-                                <h3 align="right">Fecha</h3>
+                                <h3 align="right">Fecha <?=$fecha ?></h3>
                                     <thead>
                                     <tr>
                                         <th>#</th>
@@ -41,7 +41,7 @@
                                     <tr>
                                         <td><?= $num?></td>
                                         <td><?= $key->caja_datos_nombre ?></td>
-                                        <td><?= $key->caja_datos_monto ?></td>
+                                        <td><?= $key->caja_datos_monto ?> Pesos ($)</td>
                                         <td> <?php if($key->caja_datos_tipo==1){?>
                                         <span class="label label-sm label-info">Entrada</span>
                                         <?php }else{  ?>
@@ -52,17 +52,18 @@
                                     <?php $num++; } }?>
                                     </tbody>
                                     <tfoot>
+                                   
                                     <tr>
                                     <th></th>
                                         <th></th>
-                                        <th>TOTAL EN CAJA</th>
-                                        <th>250$</th>    
+                                        <th><h2>TOTAL EN CAJA</h2></th>
+                                        <th><h2><?=$total ?> $</h2></th> 
                                     </tr>
                                     </tfoot>
 
                                 </table>
                                 <a type="submit" class="btn btn-primary" href="<?=site_url('caja/entradas_salidas'); ?>">Agregar Entrada o Salida de Efectivo</a>
-                                <a type="submit" class="btn btn-warning" href="">Cerrar Caja</a>
+                                <a type="submit" class="btn btn-warning" href="<?=site_url('administradores/'); ?>">Cerrar Caja</a>
                             </div>
                         </div>
             </div>

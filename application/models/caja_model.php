@@ -13,7 +13,7 @@ class Caja_model extends CI_Model {
 
 	public function verificar_estado()
 	{
-		$this->db->select('caja_total_id');
+		$this->db->select('caja_total_id,caja_total_fecha');
 		$this->db->from('caja_total');
 		$this->db->where('caja_total_estado',1);
 
@@ -37,14 +37,6 @@ class Caja_model extends CI_Model {
 			else return FALSE;
     }
 
-    public function obtener_id()
-    {
-    	$this->db->select('caja_total_id');
-		$this->db->from('caja_total');
-		$this->db->where('caja_total_id',$id_caja_total);
-    }
-
-
    	public function insertar_caja($data){
 
 		if($this->db->insert('caja_datos',$data))
@@ -52,6 +44,39 @@ class Caja_model extends CI_Model {
 		else		
 			return false;
 	}
+
+	public function caja_total_entradas($id_caja_total)
+	{
+		$this->db->select_sum('caja_datos_monto');
+		$this->db->from('caja_datos');
+		$this->db->where('caja_total_id',$id_caja_total);
+		$this->db->where('caja_datos_tipo',1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0){
+				return $query->result();
+			}
+			else return FALSE;
+	}
+
+	public function caja_total_salidas($id_caja_total)
+	{
+		$this->db->select_sum('caja_datos_monto');
+		$this->db->from('caja_datos');
+		$this->db->where('caja_total_id',$id_caja_total);
+		$this->db->where('caja_datos_tipo',2);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0){
+				return $query->result();
+			}
+			else return FALSE;
+	}
+
+
+
 
 
 }
