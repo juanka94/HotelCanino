@@ -487,6 +487,92 @@ class Habitaciones extends CI_Controller {
 	        	$data['paquetes'][$num] = FALSE;
 	        }
 	        $num++;
+	    }
+
+	    $res_id = $this->input->post('id');
+
+	    $this->administradores_model->dar_baja($res_id);
+
+        $this->generar_pdf($data);
+	}
+
+	public function preparar_pdf()
+	{
+		$data['res_id'] = $this->input->post('id');
+		$data['us_id'] = $this->input->post('us_id');
+		$data['nombre_usuario'] = $this->input->post('nombre_us');
+        $data['paterno'] = $this->input->post('apellido_paterno');
+        $data['materno'] = $this->input->post('apellido_materno');
+        $data['fecha_in'] = $this->input->post('fecha_in');
+        $data['fecha_out'] = $this->input->post('fecha_out');
+
+        $query = $this->administradores_model->res_usuario($data['us_id']);
+
+        foreach ($query as $key) {
+			$data['usuario'] = array(
+				'id' => $key->us_id,
+				'nombre'=> $key->us_nombre,
+				'paterno'=> $key->us_ap_paterno,
+				'materno'=> $key->us_ap_materno,
+				'correo' => $key->us_email,
+				'casa'=> $key->us_tel_casa,
+				'cel'=> $key->us_tel_cel,
+				'calle'=> $key->us_dom_calle,
+				'localidad'=> $key->us_dom_localidad,
+				'municipio'=> $key->us_dom_municipio,
+				'estado'=> $key->us_dom_estado
+			);
+		}
+
+        $query = $this->administradores_model->get_mascotas($data['us_id'], $data['res_id']);
+
+        $num = 0;
+
+        foreach ($query as $key) {
+			$data['mascota'][$num] = array(
+				'id' => $key->mas_id,
+				'nombre'=> $key->mas_nombre,
+				'size'=> $key->mas_size,
+				'raza'=> $key->mas_raza,
+				'genero'=> $key->mas_genero,
+				'color'=> $key->mas_color,
+				'edad'=> $key->mas_edad,
+				'hora_comida'=> $key->mas_hora_comida,
+				'esterilizado'=> $key->mas_esterilizado,
+				'agresivo'=> $key->mas_agresivo,
+				'medicamento'=> $key->mas_medicamento,
+				'observaciones'=> $key->mas_observaciones,
+			);
+			$num++;
+		}
+
+		$num = 0;
+
+        foreach ($data['mascota'] as $key) {
+	        $query = $this->administradores_model->producto_cantidad_precio($data['res_id'], $key['id']);  
+	        if ($query) {
+	        	$data['productos'][$num] = $query;
+	        }
+	        else {
+	        	$data['productos'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->servicio_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['servicios'][$num] = $query;
+	        }
+	        else {
+	        	$data['servicios'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->paquete_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['paquetes'][$num] = $query;
+	        }
+	        else {
+	        	$data['paquetes'][$num] = FALSE;
+	        }
+	        $num++;
 	    } 
 
         $this->generar_pdf($data);
