@@ -16,7 +16,7 @@ $municipio = array('name' =>'','class' =>'form-control','value'=>$usuario["munic
 $estado = array('name' =>'','class' =>'form-control','value'=>$usuario["estado"],'disabled'=>'1');
 $label= array('name'=>'','class'=>'col-sm-3 control-label');
 $submit = array('name' => '','class'=>'btn btn-red btn-lg' );
-$hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'apellido_paterno' => $usuario["paterno"], 'apellido_materno' => $usuario["materno"], 'fecha_in' => $reservacion["fecha_in"], 'fecha_out' => $reservacion["fecha_out"]);
+$hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us' => $usuario["nombre"], 'apellido_paterno' => $usuario["paterno"], 'apellido_materno' => $usuario["materno"], 'fecha_in' => $reservacion["fecha_in"], 'fecha_out' => $reservacion["fecha_out"]);
 ?>
 <div id="page-wrapper">
 <!--BEGIN TITLE & BREADCRUMB PAGE-->
