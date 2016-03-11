@@ -35,20 +35,21 @@
                                     <tbody>
                                     <!-- 1 entrada 2 salida -->
                                     <?php 
+                                    if ($caja) {
                                         $num=1;
                                         foreach ($caja as $value => $key) { ?>
                                     <tr>
                                         <td><?= $num?></td>
-                                        <td><?= $key->caja_nombre ?></td>
-                                        <td><?= $key->caja_monto ?></td>
-                                        <td> <?php if($key->caja_tipo==1){?>
+                                        <td><?= $key->caja_datos_nombre ?></td>
+                                        <td><?= $key->caja_datos_monto ?></td>
+                                        <td> <?php if($key->caja_datos_tipo==1){?>
                                         <span class="label label-sm label-info">Entrada</span>
                                         <?php }else{  ?>
                                         <span class="label label-sm label-danger">Salida</span>
                                         <?php } ?>
                                         </td>  
                                     </tr>
-                                    <?php $num++; } ?>
+                                    <?php $num++; } }?>
                                     </tbody>
                                     <tfoot>
                                     <tr>

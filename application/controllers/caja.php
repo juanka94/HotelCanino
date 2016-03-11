@@ -11,12 +11,44 @@ class Caja extends CI_Controller {
 
 	public function index()
 	{
-		$data['caja'] = $this->caja_model->obtener_caja();
-		$this->load->view('administrador/layers/header');
-		$this->load->view('administrador/layers/menu');
-		$this->load->view('administrador/caja/tabla',$data);
-		$this->load->view('administrador/layers/footer');
+
+		$result_estado=$this->caja_model->verificar_estado();
+
+		if(!$result_estado){
+			$this->load->view('administrador/layers/header');
+			$this->load->view('administrador/layers/menu');
+			$this->load->view('administrador/caja/inicio_caja');
+			$this->load->view('administrador/layers/footer');
+			
+		}else{
+			foreach ($result_estado as $key) {
+					$id=$key->caja_total_id;	
+			}
+
+			$data['caja'] = $this->caja_model->obtener_caja($id);
+			$this->load->view('administrador/layers/header');
+			$this->load->view('administrador/layers/menu');
+			$this->load->view('administrador/caja/tabla',$data);
+			$this->load->view('administrador/layers/footer');
+			
+		}
 	}
+
+	public function inicio_caja()
+	{
+		if(!empty($_POST)) {
+			$data = array(
+				'caja_total_fecha'=> $this->input->post('fech_in'),
+				'caja_total_inicio'=> $this->input->post('monto_inicial'),
+				'caja_total_total'=> 0,
+				'caja_total_estado'=> 1 //activa 0 inactiva
+				
+				);
+		}
+		if($this->caja_model->inicio_caja($data))
+		redirect('caja/index');
+	}
+
 
 	public function entradas_salidas()
 	{
@@ -25,7 +57,6 @@ class Caja extends CI_Controller {
 		$this->load->view('administrador/caja/form_entrada');
 		$this->load->view('administrador/layers/footer');
 	}
-
 
 	public function insertar_caja()
 	{
@@ -40,6 +71,8 @@ class Caja extends CI_Controller {
 		redirect('caja/index');
 		
 	}
+
+	
 
 }
 
