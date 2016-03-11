@@ -60,11 +60,17 @@ class Caja extends CI_Controller {
 
 	public function insertar_caja()
 	{
+		$id_result_estado=$this->caja_model->verificar_estado();
+		foreach ($id_result_estado as $key) {
+					$id=$key->caja_total_id;
+		}
+
 		if(!empty($_POST)) {
 			$data = array(
-				'caja_nombre'=> $this->input->post('nom_entrada'),
-				'caja_monto'=> $this->input->post('efectivo_entrada'),
-				'caja_tipo'=> $this->input->post('tipo_entrada')
+				'caja_datos_nombre'=> $this->input->post('nom_entrada'),
+				'caja_datos_monto'=> $this->input->post('efectivo_entrada'),
+				'caja_datos_tipo'=> $this->input->post('tipo_entrada'),
+				'caja_total_id'=>$id
 				);
 		}
 		if($this->caja_model->insertar_caja($data))

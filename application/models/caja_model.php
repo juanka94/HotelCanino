@@ -37,9 +37,17 @@ class Caja_model extends CI_Model {
 			else return FALSE;
     }
 
-   public function insertar_caja($data){
+    public function obtener_id()
+    {
+    	$this->db->select('caja_total_id');
+		$this->db->from('caja_total');
+		$this->db->where('caja_total_id',$id_caja_total);
+    }
 
-		if($this->db->insert('caja',$data))
+
+   	public function insertar_caja($data){
+
+		if($this->db->insert('caja_datos',$data))
 			return true;
 		else		
 			return false;
