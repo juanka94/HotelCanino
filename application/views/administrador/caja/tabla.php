@@ -23,7 +23,7 @@
                             <div class="panel-heading">Sistema de Entradas y Salidas de Efectivo</div>
                             <div class="panel-body">
                                 <table class="table table-hover table-bordered">
-                                <h3 align="right"><?=date('d/m/y')?></h3>
+                                <h3 align="right">Fecha</h3>
                                     <thead>
                                     <tr>
                                         <th>#</th>

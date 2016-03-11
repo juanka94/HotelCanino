@@ -54,7 +54,7 @@ class Caja extends CI_Controller {
 	{
 		$this->load->view('administrador/layers/header');
 		$this->load->view('administrador/layers/menu');
-		$this->load->view('administrador/caja/form_entrada');
+		$this->load->view('administrador/caja/form_entrada_salida');
 		$this->load->view('administrador/layers/footer');
 	}
 
