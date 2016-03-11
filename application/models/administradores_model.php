@@ -866,6 +866,12 @@ class Administradores_model extends CI_Model {
 		else return FALSE;
 	}
 
+	public function dar_baja($id)
+	{
+		$data = array('res_status'=> 0);
+		$this->db->where('res_id', $id);
+		$this->db->update('reservaciones', $data);
+	}
 }
 
 /* End of file administradores.php */
