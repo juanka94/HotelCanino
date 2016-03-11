@@ -425,12 +425,30 @@ class Administradores_model extends CI_Model {
 		$this->db->insert('reservaciones-paquetes', $data);
 	}
 
-	public function producto_cantidad_precio($id)
+	public function get_mascotas($us_id, $res_id)
+	{
+		$this->db->select('m.*');
+		$this->db->from('mascotas m');
+		$this->db->join('mascotas_reservaciones mr', 'mr.mas_res_id_mas = m.mas_id');
+		$this->db->where('m.mas_id_usuario', $us_id);
+		$this->db->where('mr.mas_res_id_res', $res_id);	
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) 
+		{
+			return $query->result();
+		}
+		else return FALSE;
+	}
+
+	public function producto_cantidad_precio($res_id, $mas_id)
 	{
 		$this->db->select('rp.res_prod_id_prod, rp.res_prod_cantidad, p.prod_precio, p.prod_nombre');
 		$this->db->from('reservaciones-productos rp');
 		$this->db->join('productos p', 'rp.res_prod_id_prod = p.prod_id');
-		$this->db->where('rp.res_prod_id_res',$id);
+		$this->db->where('rp.res_prod_id_res',$res_id);
+		$this->db->where('rp.res_prod_id_mas', $mas_id);
 
 		$query = $this->db->get();
 
@@ -441,12 +459,13 @@ class Administradores_model extends CI_Model {
 		else return FALSE;
 	}
 
-	public function servicio_cantidad_precio($id)
+	public function servicio_cantidad_precio($res_id, $mas_id)
 	{
 		$this->db->select('rp.res_serv_id_serv, rp.res_serv_cantidad, s.serv_precio, s.serv_nombre');
 		$this->db->from('reservaciones-servicios rp');
 		$this->db->join('servicios s', 'rp.res_serv_id_serv = s.serv_id');
-		$this->db->where('rp.res_serv_id_res',$id);
+		$this->db->where('rp.res_serv_id_res',$res_id);
+		$this->db->where('rp.res_serv_id_mas', $mas_id);
 
 		$query = $this->db->get();
 
@@ -457,12 +476,13 @@ class Administradores_model extends CI_Model {
 		else return FALSE;
 	}
 
-	public function paquete_cantidad_precio($id)
+	public function paquete_cantidad_precio($res_id, $mas_id)
 	{
 		$this->db->select('rp.res_paque_id_paque, rp.res_paque_cantidad, p.paque_precio, p.paque_nombre');
 		$this->db->from('reservaciones-paquetes rp');
 		$this->db->join('paquetes p', 'rp.res_paque_id_paque = p.paque_id');
-		$this->db->where('rp.res_paque_id_res',$id);
+		$this->db->where('rp.res_paque_id_res',$res_id);
+		$this->db->where('rp.res_paque_id_mas', $mas_id);
 
 		$query = $this->db->get();
 
