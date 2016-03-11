@@ -95,8 +95,7 @@ $hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us'
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="form-group"><?= (form_label('Apellido materno','',$label)); ?>
-
+                                        <div class="form-group"><?= (form_label('Apellido materno','',$label)); ?>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($apellido_materno)); ?></div>
@@ -104,7 +103,6 @@ $hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us'
                                             </div>
                                         </div>
                                          <div class="form-group"><?= (form_label('Correo Electronico','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($correo)); ?></div>
@@ -112,7 +110,6 @@ $hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us'
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Tel. Celular','',$label)); ?>
-
                                             <div class="col-sm-5 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($Celular)); ?></div>
@@ -120,16 +117,13 @@ $hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us'
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Tel. Casa','',$label)); ?>
-
                                             <div class="col-sm-5 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($Casa)); ?></div>
                                                 </div>
                                             </div>
                                         </div>
-                                       
                                         <div class="form-group"><?= (form_label('Direccion','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($direccion)); ?></div>
@@ -137,14 +131,13 @@ $hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us'
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Localidad','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($localidad)); ?></div>
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="form-group"><?= (form_label('Municipio','',$label)); ?>
+                                        <div class="form-group"><?= (form_label('Municipio','',$label)); ?>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($municipio)); ?></div>

@@ -296,7 +296,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_servicio()
@@ -310,7 +310,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_servicio()
@@ -338,7 +338,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(8);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_producto()
@@ -353,7 +353,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(8);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_producto()
@@ -380,7 +380,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_paquete()
@@ -394,7 +394,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_paquete()
