@@ -39,6 +39,7 @@
                                         $num=1;
                                         foreach ($caja as $value => $key) { ?>
                                     <tr>
+                            
                                         <td><?= $num?></td>
                                         <td><?= $key->caja_datos_nombre ?></td>
                                         <td><?= $key->caja_datos_monto ?> Pesos ($)</td>
@@ -60,6 +61,8 @@
                                         <th><h2><?=$total ?> $</h2></th> 
                                     </tr>
                                     </tfoot>
+                                    <input type="hidden" name="caja_total_id" id="inputCaja_total_id" class="form-control" value="<?=$key->caja_total_id?>">
+                                    
 
                                 </table>
                                 <a type="submit" class="btn btn-primary" href="<?=site_url('caja/entradas_salidas'); ?>">Agregar Entrada o Salida de Efectivo</a>

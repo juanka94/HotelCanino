@@ -96,15 +96,16 @@ class Caja extends CI_Controller {
 
 	public function cerra_caja()
 	{
-		$this->load->view('administrador/layers/header');
-		$this->load->view('administrador/layers/menu');
-		$this->load->view('administrador/administradores');
-		$this->load->view('administrador/layers/footer');
+		if(!empty($_POST)) {
+			$id=$this->input->post('caja_total_id');
+				
+		}
+		if($this->caja_model->cerrar_caja($id))
+		redirect('caja/index');
+
 	}
-
-	
-
 }
+
 
 /* End of file caja.php */
 /* Location: ./application/controllers/caja.php */

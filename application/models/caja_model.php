@@ -13,7 +13,7 @@ class Caja_model extends CI_Model {
 
 	public function verificar_estado()
 	{
-		$this->db->select('caja_total_id,caja_total_fecha');
+		$this->db->select('*');
 		$this->db->from('caja_total');
 		$this->db->where('caja_total_estado',1);
 
@@ -73,6 +73,17 @@ class Caja_model extends CI_Model {
 				return $query->result();
 			}
 			else return FALSE;
+	}
+
+	public function cerrar_caja($id)
+	{
+		$data = array('caja_total_estado' =>0);
+		$this->db->where('caja_total_id',$id);
+		
+		if($this->db->update('caja_total', $data))
+			return true;
+		else		
+			return false;
 	}
 
 
