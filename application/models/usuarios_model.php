@@ -75,15 +75,56 @@ class Usuarios_model extends CI_Model {
 		else return FALSE;
 	}
 
-	public function add_servicio($id_res, $id_serv)
+	public function add_servicio($id_res, $id_serv, $id_mas)
 	{
 		$data['res_serv_id_res'] = $id_res;
 		$data['res_serv_id_serv'] = $id_serv;
+		$data['res_serv_id_mas'] = $id_mas;
 		$data['res_serv_cantidad'] = 1;
 		
 		$this->db->insert('reservaciones-servicios', $data);
 	}
 
+	public function res_mascota($id)
+	{	
+		$num=0;
+		$this->db->select('mas_id, mas_nombre');
+		$this->db->from('mascotas');
+		$this->db->where('mas_id',$id[0]);
+		foreach ($id as $key => $value) {
+			$this->db->or_where('mas_id',$id[$num]);
+			$num++;
+		}
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+	}
+
+	public function mas_id_usuario($id)
+	{
+		$this->db->select('mas_id');
+		$this->db->from('mascotas');
+		$this->db->where('mas_id_usuario', $id);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+	}
+
+	public function insertar_mascotas_reservaciones($data)
+    {
+    	if($this->db->insert('mascotas_reservaciones',$data))
+			return true;
+		else		
+			return false;
+    }
 }
 
 /* End of file usuarios_model.php */
