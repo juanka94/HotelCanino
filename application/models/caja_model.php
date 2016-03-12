@@ -3,9 +3,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Caja_model extends CI_Model {
 
-	function obtener_caja(){
+	public function inicio_caja($data)
+	{
+		if($this->db->insert('caja_total',$data))
+			return true;
+		else		
+			return false;
+	}
+
+	public function verificar_estado()
+	{
+		$this->db->select('*');
+		$this->db->from('caja_total');
+		$this->db->where('caja_total_estado',1);
+
+		$query = $this->db->get(); 
+			if ($query->num_rows() > 0){
+				return $query->result();
+			}
+			else return FALSE;
+
+	}
+
+	function obtener_caja($id_caja_total){
 	    $this->db->select('*');
-		$this->db->from('caja');
+		$this->db->from('caja_datos');
+		$this->db->where('caja_total_id',$id_caja_total);
 
 		$query = $this->db->get(); 
 			if ($query->num_rows() > 0){
@@ -14,13 +37,57 @@ class Caja_model extends CI_Model {
 			else return FALSE;
     }
 
-   public function insertar_caja($data){
+   	public function insertar_caja($data){
 
-		if($this->db->insert('caja',$data))
+		if($this->db->insert('caja_datos',$data))
 			return true;
 		else		
 			return false;
 	}
+
+	public function caja_total_entradas($id_caja_total)
+	{
+		$this->db->select_sum('caja_datos_monto');
+		$this->db->from('caja_datos');
+		$this->db->where('caja_total_id',$id_caja_total);
+		$this->db->where('caja_datos_tipo',1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0){
+				return $query->result();
+			}
+			else return FALSE;
+	}
+
+	public function caja_total_salidas($id_caja_total)
+	{
+		$this->db->select_sum('caja_datos_monto');
+		$this->db->from('caja_datos');
+		$this->db->where('caja_total_id',$id_caja_total);
+		$this->db->where('caja_datos_tipo',2);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0){
+				return $query->result();
+			}
+			else return FALSE;
+	}
+
+	public function cerrar_caja($id)
+	{
+		$data = array('caja_total_estado' =>0);
+		$this->db->where('caja_total_id',$id);
+		
+		if($this->db->update('caja_total', $data))
+			return true;
+		else		
+			return false;
+	}
+
+
+
 
 
 }
