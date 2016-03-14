@@ -24,28 +24,32 @@ class Mascotas extends CI_Controller {
 
 		$query = $this->administradores_model->buscar_mascotas($name);
 
-		$num = 0;
+		if ($query) {
+			$num = 0;
 
-		foreach ($query as $key) {
-			$data['mascota'][$num] = array(
-				'id' => $key->mas_id,
-				'nombre'=> $key->mas_nombre,
-				'size'=> $key->mas_size,
-				'raza'=> $key->mas_raza,
-				'genero'=> $key->mas_genero,
-				'color'=> $key->mas_color,
-				'edad'=> $key->mas_edad,
-				'hora_comida'=> $key->mas_hora_comida,
-				'esterilizado'=> $key->mas_esterilizado,
-				'agresivo'=> $key->mas_agresivo,
-				'medicamento'=> $key->mas_medicamento,
-				'observaciones'=> $key->mas_observaciones,
-				'us_id' => $key->us_id,
-				'nombre_dueño' => $key->us_nombre,
-				'paterno' => $key->us_ap_paterno,
-				'materno' =>$key->us_ap_materno
-			);
-			$num++;
+			foreach ($query as $key) {
+				$data['mascota'][$num] = array(
+					'id' => $key->mas_id,
+					'nombre'=> $key->mas_nombre,
+					'size'=> $key->mas_size,
+					'raza'=> $key->mas_raza,
+					'genero'=> $key->mas_genero,
+					'color'=> $key->mas_color,
+					'edad'=> $key->mas_edad,
+					'hora_comida'=> $key->mas_hora_comida,
+					'esterilizado'=> $key->mas_esterilizado,
+					'agresivo'=> $key->mas_agresivo,
+					'medicamento'=> $key->mas_medicamento,
+					'observaciones'=> $key->mas_observaciones,
+					'us_id' => $key->us_id,
+					'nombre_dueño' => $key->us_nombre,
+					'paterno' => $key->us_ap_paterno,
+					'materno' =>$key->us_ap_materno
+				);
+				$num++;
+			}
+		}else{
+			$data['resultado'] = FALSE;
 		}
 
 		$this->load->view('administrador/layers/header');

@@ -1,6 +1,6 @@
    <?php 
         $datos = $this->session->userdata('logged_user');
-        $hidden = array('id_serv_redondo' => $id_serv_redondo, 'id_serv_sencillo' => $id_serv_sencillo);
+        $hidden = array('id_serv_redondo' => $id_serv_redondo, 'id_serv_sencillo' => $id_serv_sencillo, 'num_mascota' => $num_mascota);
 ?>
 <!--breadcrumbs start-->
     <div class="breadcrumbs">
@@ -39,7 +39,8 @@
                 <label>Fecha y Hora de salida</label>
                 <!--<input type="text" name="fech_out" id="input" class="form-control" value="" placeholder="fecha de salida">-->
                 <input type="text" name="fech_out" class="form-control" id="datetimepicker_fecha_out"/>
-                <h3>Datos del Canino</h3>
+                <hr>
+                <!--<h3>Datos del Canino</h3>
                 <label>Nombre del Canino</label>
                 <input type="text" name="nom_mascota" id="input" class="form-control" value="" placeholder="Nombre">
                 <label>Tamaño (Con Respecto al peso)</label>  
@@ -76,7 +77,33 @@
                 <label class="radio-inline"><input type="radio" name="agresivo" value="0">No</label>
                 <br/>
                 <label>Observaciones</label>
-                <textarea name="observaciones" class="form-control"></textarea>
+                <textarea name="observaciones" class="form-control"></textarea>-->
+
+                <h3>Canes</h3>
+                <label>Elije a 3 perros</label>
+                <br>
+
+                <div class="checkbox">
+                <?php 
+                $num = 0;
+                    foreach ($mascota as $key) { ?>
+                    <label>
+                        <input type="checkbox" name="mascota<?=$num?>" value="<?=$key['id']?>"><?=$key['nombre']?><br>
+                    </label>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="1" name="baño_salida<?=$num?>">Baño de Salida $50.00<br>
+                         </label>
+                     </div>
+                     <div class="checkbox">
+                         <label>
+                             <input type="checkbox" value="1" name="rev_veterinaria<?=$num?>">Revision Veterinaria $40.00<br>
+                         </label>
+                     </div>
+                    <?php $num++; } ?>
+                 </div>
+
+                <hr>
                 <h3>Servicios adicionales</h3>
                 <label>Recojer a domicilio</label>
                 <br/>
@@ -103,7 +130,7 @@
                      </label>
                  </div>
                
-                <hr/>
+                <!--<hr/>
                  <div class="checkbox">
                      <label>
                          <input type="checkbox" value="true" name="baño_salida">
@@ -115,7 +142,7 @@
                          <input type="checkbox" value="true" name="rev_veterinaria">
                          Revision Veterinaria $40.00
                      </label>
-                 </div>
+                 </div>-->
                  <h3 id="total_redondo">Precio viaje sencillo:</h3>
                  <h3 id="total_sencillo">Precio viaje redondo:</h3>
                  <hr/>

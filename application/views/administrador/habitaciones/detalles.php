@@ -16,7 +16,8 @@ $municipio = array('name' =>'','class' =>'form-control','value'=>$usuario["munic
 $estado = array('name' =>'','class' =>'form-control','value'=>$usuario["estado"],'disabled'=>'1');
 $label= array('name'=>'','class'=>'col-sm-3 control-label');
 $submit = array('name' => '','class'=>'btn btn-red btn-lg' );
-$hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'apellido_paterno' => $usuario["paterno"], 'apellido_materno' => $usuario["materno"], 'fecha_in' => $reservacion["fecha_in"], 'fecha_out' => $reservacion["fecha_out"]);
+$submit2 = array('name' => '','class'=>'btn btn-blue btn-lg' );
+$hidden = array('id'=>$reservacion["id"], 'us_id' => $usuario['id'], 'nombre_us' => $usuario["nombre"], 'apellido_paterno' => $usuario["paterno"], 'apellido_materno' => $usuario["materno"], 'fecha_in' => $reservacion["fecha_in"], 'fecha_out' => $reservacion["fecha_out"]);
 ?>
 <div id="page-wrapper">
 <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -94,8 +95,7 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="form-group"><?= (form_label('Apellido materno','',$label)); ?>
-
+                                        <div class="form-group"><?= (form_label('Apellido materno','',$label)); ?>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($apellido_materno)); ?></div>
@@ -103,7 +103,6 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                          <div class="form-group"><?= (form_label('Correo Electronico','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($correo)); ?></div>
@@ -111,7 +110,6 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Tel. Celular','',$label)); ?>
-
                                             <div class="col-sm-5 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($Celular)); ?></div>
@@ -119,16 +117,13 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Tel. Casa','',$label)); ?>
-
                                             <div class="col-sm-5 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($Casa)); ?></div>
                                                 </div>
                                             </div>
                                         </div>
-                                       
                                         <div class="form-group"><?= (form_label('Direccion','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($direccion)); ?></div>
@@ -136,15 +131,13 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Localidad','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($localidad)); ?></div>
                                                 </div>
                                             </div>
                                         </div>
-                                         <div class="form-group"><?= (form_label('Municipio','',$label)); ?>
-
+                                        <div class="form-group"><?= (form_label('Municipio','',$label)); ?>
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($municipio)); ?></div>
@@ -152,7 +145,6 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                         <div class="form-group"><?= (form_label('Estado','',$label)); ?>
-
                                             <div class="col-sm-9 controls">
                                                 <div class="row">
                                                     <div class="col-xs-9"><?= (form_input($estado)); ?></div>
@@ -160,8 +152,13 @@ $hidden = array('id'=>$reservacion["id"], 'nombre_us' => $usuario["nombre"], 'ap
                                             </div>
                                         </div>
                                         <hr/>
-                                        <?= form_submit('', 'Dar de baja',$submit);?>
-                                        <?= form_close(); ?>
+                                        <ul class="list-inline">
+                                            <li><?= form_submit('', 'Dar de baja',$submit);?>
+                                            <?= form_close(); ?></li>
+                                            <li class="pull-right"><?=  (form_open('habitaciones/preparar_pdf','',$hidden)); ?>
+                                            <?= form_submit('', 'Generar PDF',$submit2);?>
+                                            <?= form_close(); ?></li>
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

@@ -296,7 +296,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_servicio()
@@ -310,7 +310,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_servicio()
@@ -338,7 +338,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(8);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_producto()
@@ -353,7 +353,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(8);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_producto()
@@ -380,7 +380,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function quitar_paquete()
@@ -394,7 +394,7 @@ class Habitaciones extends CI_Controller {
 
 		$data['num_habitacion'] = $this->uri->segment(7);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/habitaciones/detalles/'.$data['num_habitacion']);
+		header('Location: http://localhost/HotelCanio/index.php/habitaciones/detalles/'.$data['num_habitacion']);
 	}
 
 	public function borrar_paquete()
@@ -413,40 +413,167 @@ class Habitaciones extends CI_Controller {
 	public function dar_baja()
 	{
 		$data['res_id'] = $this->input->post('id');
+		$data['us_id'] = $this->input->post('us_id');
 		$data['nombre_usuario'] = $this->input->post('nombre_us');
         $data['paterno'] = $this->input->post('apellido_paterno');
         $data['materno'] = $this->input->post('apellido_materno');
-        $data['nombre_mascota'] = $this->input->post('nombre_mascota');
         $data['fecha_in'] = $this->input->post('fecha_in');
         $data['fecha_out'] = $this->input->post('fecha_out');
-        $data['tamaño'] = $this->input->post('tamaño');
-        
-        $query = $this->administradores_model->producto_cantidad_precio($data['res_id']);  
-        if ($query) {
-        	/*foreach ($query as $key) {
-        		$data['servicios'] = $key->res_prod_id_prod;
-        	}*/
-        	$data['productos'] = $query;
-        }
-        else {
-        	$data['productos'] = FALSE;
-        }
 
-        $query = $this->administradores_model->servicio_cantidad_precio($data['res_id']);
-        if ($query) {
-        	$data['servicios'] = $query;
-        }
-        else {
-        	$data['servicios'] = FALSE;
-        }
+        $query = $this->administradores_model->res_usuario($data['us_id']);
 
-        $query = $this->administradores_model->paquete_cantidad_precio($data['res_id']);
-        if ($query) {
-        	$data['paquetes'] = $query;
-        }
-        else {
-        	$data['paquetes'] = FALSE;
-        }
+        foreach ($query as $key) {
+			$data['usuario'] = array(
+				'id' => $key->us_id,
+				'nombre'=> $key->us_nombre,
+				'paterno'=> $key->us_ap_paterno,
+				'materno'=> $key->us_ap_materno,
+				'correo' => $key->us_email,
+				'casa'=> $key->us_tel_casa,
+				'cel'=> $key->us_tel_cel,
+				'calle'=> $key->us_dom_calle,
+				'localidad'=> $key->us_dom_localidad,
+				'municipio'=> $key->us_dom_municipio,
+				'estado'=> $key->us_dom_estado
+			);
+		}
+
+        $query = $this->administradores_model->get_mascotas($data['us_id'], $data['res_id']);
+
+        $num = 0;
+
+        foreach ($query as $key) {
+			$data['mascota'][$num] = array(
+				'id' => $key->mas_id,
+				'nombre'=> $key->mas_nombre,
+				'size'=> $key->mas_size,
+				'raza'=> $key->mas_raza,
+				'genero'=> $key->mas_genero,
+				'color'=> $key->mas_color,
+				'edad'=> $key->mas_edad,
+				'hora_comida'=> $key->mas_hora_comida,
+				'esterilizado'=> $key->mas_esterilizado,
+				'agresivo'=> $key->mas_agresivo,
+				'medicamento'=> $key->mas_medicamento,
+				'observaciones'=> $key->mas_observaciones,
+			);
+			$num++;
+		}
+
+		$num = 0;
+
+        foreach ($data['mascota'] as $key) {
+	        $query = $this->administradores_model->producto_cantidad_precio($data['res_id'], $key['id']);  
+	        if ($query) {
+	        	$data['productos'][$num] = $query;
+	        }
+	        else {
+	        	$data['productos'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->servicio_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['servicios'][$num] = $query;
+	        }
+	        else {
+	        	$data['servicios'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->paquete_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['paquetes'][$num] = $query;
+	        }
+	        else {
+	        	$data['paquetes'][$num] = FALSE;
+	        }
+	        $num++;
+	    }
+
+	    $res_id = $this->input->post('id');
+
+	    $this->administradores_model->dar_baja($res_id);
+
+        $this->generar_pdf($data);
+	}
+
+	public function preparar_pdf()
+	{
+		$data['res_id'] = $this->input->post('id');
+		$data['us_id'] = $this->input->post('us_id');
+		$data['nombre_usuario'] = $this->input->post('nombre_us');
+        $data['paterno'] = $this->input->post('apellido_paterno');
+        $data['materno'] = $this->input->post('apellido_materno');
+        $data['fecha_in'] = $this->input->post('fecha_in');
+        $data['fecha_out'] = $this->input->post('fecha_out');
+
+        $query = $this->administradores_model->res_usuario($data['us_id']);
+
+        foreach ($query as $key) {
+			$data['usuario'] = array(
+				'id' => $key->us_id,
+				'nombre'=> $key->us_nombre,
+				'paterno'=> $key->us_ap_paterno,
+				'materno'=> $key->us_ap_materno,
+				'correo' => $key->us_email,
+				'casa'=> $key->us_tel_casa,
+				'cel'=> $key->us_tel_cel,
+				'calle'=> $key->us_dom_calle,
+				'localidad'=> $key->us_dom_localidad,
+				'municipio'=> $key->us_dom_municipio,
+				'estado'=> $key->us_dom_estado
+			);
+		}
+
+        $query = $this->administradores_model->get_mascotas($data['us_id'], $data['res_id']);
+
+        $num = 0;
+
+        foreach ($query as $key) {
+			$data['mascota'][$num] = array(
+				'id' => $key->mas_id,
+				'nombre'=> $key->mas_nombre,
+				'size'=> $key->mas_size,
+				'raza'=> $key->mas_raza,
+				'genero'=> $key->mas_genero,
+				'color'=> $key->mas_color,
+				'edad'=> $key->mas_edad,
+				'hora_comida'=> $key->mas_hora_comida,
+				'esterilizado'=> $key->mas_esterilizado,
+				'agresivo'=> $key->mas_agresivo,
+				'medicamento'=> $key->mas_medicamento,
+				'observaciones'=> $key->mas_observaciones,
+			);
+			$num++;
+		}
+
+		$num = 0;
+
+        foreach ($data['mascota'] as $key) {
+	        $query = $this->administradores_model->producto_cantidad_precio($data['res_id'], $key['id']);  
+	        if ($query) {
+	        	$data['productos'][$num] = $query;
+	        }
+	        else {
+	        	$data['productos'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->servicio_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['servicios'][$num] = $query;
+	        }
+	        else {
+	        	$data['servicios'][$num] = FALSE;
+	        }
+
+	        $query = $this->administradores_model->paquete_cantidad_precio($data['res_id'], $key['id']);
+	        if ($query) {
+	        	$data['paquetes'][$num] = $query;
+	        }
+	        else {
+	        	$data['paquetes'][$num] = FALSE;
+	        }
+	        $num++;
+	    } 
 
         $this->generar_pdf($data);
 	}
@@ -515,30 +642,35 @@ class Habitaciones extends CI_Controller {
 		//quito los decimales a los días de diferencia 
 		$dias_diferencia = floor($dias_diferencia); 
 
-		switch ($data['tamaño']) {
-			case '0':
-				$tamaño = 'Chico';
-				$precio_dias=80;
-				break;
+		$num = 0;
 
-			case '1':
-				$tamaño = 'Mediano';
-				$precio_dias=100;
-				break;
+		foreach ($data['mascota'] as $key) {
+			switch ($key['size']) {
+				case '1':
+					$tamaño[$num] = 'Chico';
+					$precio_dias[$num] = 80;
+					break;
 
-			case '2':
-				$tamaño = 'Grande';
-				$precio_dias=120;
-				break;
+				case '2':
+					$tamaño[$num] = 'Mediano';
+					$precio_dias[$num] = 100;
+					break;
 
-			case '3':
-				$tamaño = 'Extra grande';
-				$precio_dias=150;
-				break;
-			
-			default:
-				$precio_dias=1;
-				break;
+				case '3':
+					$tamaño[$num] = 'Grande';
+					$precio_dias[$num] = 120;
+					break;
+
+				case '4':
+					$tamaño[$num] = 'Extra grande';
+					$precio_dias[$num] = 150;
+					break;
+				
+				default:
+					$precio_dias[$num] = 1;
+					break;
+			}
+			$num++;
 		}
 
 		$html = "<style type=text/css>
@@ -549,63 +681,91 @@ class Habitaciones extends CI_Controller {
 
 		$html .= "<h5>Cliente</h5>"; 
         $html .= "<p> <strong>Nombre del dueño: </strong>". $data['nombre_usuario']." ".$data['paterno']." ". $data['materno']."</p>";
+        $html .= "<p><strong>Dirección: </strong>".$data['usuario']['calle']." ".$data['usuario']['localidad']." ".$data['usuario']['municipio']." ".$data['usuario']['estado']." </p>";
+       	$html .= "<p><strong>Telefono Casa: </strong>".$data['usuario']['casa']." &nbsp; &nbsp; <strong>Telefono Celular: </strong>".$data['usuario']['cel']."</p>";
+       	$html .= "<hr>";
+       	$html .= "<br>";
 
-        $html .= "<h5>Canino</h5>";
-       	$html .= "<p> <strong>Nombre del perro: </strong>".$data['nombre_mascota']."</p>";
-       	$html .= "<p> <strong>Tamaño: </strong>".$tamaño."</p>";
+       	$html .= "<h5>Canino</h5>";
+
+       	$num = 0;
+       	foreach ($data['mascota'] as $key) {
+	       	$html .= "<p><strong>Nombre: </strong>".$key['nombre']."&nbsp; &nbsp; <strong>Raza: </strong>".$key['raza']."</p>";
+	       	$html .= "<p><strong>Edad:</strong>".$key['edad']."&nbsp; &nbsp; <strong>¿A que hora come? </strong>".$key['hora_comida']."</p>";
+	       	$html .= "<p><strong>Tamaño: </strong>".$tamaño[$num]."</p>";
+	       	$html .= "<hr>";
+       		$html .= "<br>";
+	       	$num++;
+	    }
+
+	    $html .= "<hr>";
+       	$html .= "<br>";
 
        	$html .= "<h5>Servicio</h5>";
-       	$html .= "<p><strong>Fecha de entrada:</strong> ".$data['fecha_in']."</p> 
-       			  <p><strong>Fecha de salida:</strong> ".$data['fecha_out']."</p>";
+       	$html .= "<p><strong>Fecha de ingreso: </strong>".$data['fecha_in']."&nbsp; &nbsp; <strong>Fecha de salida: </strong>".$data['fecha_out']."</p>";
+       	$html .= "<hr>";
+       	$html .= "<br>";
 
-		$html .= "<table cellspacing='0' cellpadding='1' border='1'>";
+		$html .= "<table border='1' cellpadding='1' cellspacing='1'  style='width:500px'>";
 		$html .= "	<tr>";
-		$html .= "		<td>Nombre</td>";
-		$html .= "      <td>cantidad</td>";
-		$html .= "		<td>Total</td>";
+		$html .= "		<th scope='col'>Cantidad</th>";
+		$html .= "      <th scope='col'>Concepto</th>";
+		$html .= "		<th scope='col'>P. unitario</th>";
+		$html .= "		<th scope='col'>Importe</th>";
 		$html .= "	</tr>";
-		if ($data['productos']) {
-			foreach ($data['productos'] as $key) {
-       		$html .= "	<tr>";
-       		$html .= "		<td>".$key->prod_nombre."</td>";
-       		$html .= "		<td>".$key->res_prod_cantidad."</td>";
-       		$html .= "		<td>$".$key->res_prod_cantidad * $key->prod_precio."</td>";
-       		$html .= "	</tr>";
-       		$total += $key->res_prod_cantidad * $key->prod_precio;
-       		}
-		}
 
-		if ($data['servicios']) {
-			foreach ($data['servicios'] as $key) {
-       		$html .= "	<tr>";
-       		$html .= "		<td>".$key->serv_nombre."</td>";
-       		$html .= "		<td>".$key->res_serv_cantidad."</td>";
-       		$html .= "		<td>$".$key->res_serv_cantidad * $key->serv_precio."</td>";
-       		$html .= "	</tr>";
-       		$total += $key->res_serv_cantidad * $key->serv_precio;
-       		}
-		}
+		$num = 0;
+		foreach ($data['mascota'] as $key) {
+			if ($data['productos'][$num]) {
+				foreach ($data['productos'][$num] as $value) {
+		       		$html .= "	<tr>";
+		       		$html .= "		<td>".$value->prod_nombre."</td>";
+		       		$html .= "		<td>".$value->res_prod_cantidad."</td>";
+		       		$html .= "		<td>$".$value->prod_precio."</td>";
+		       		$html .= "		<td>$".$value->res_prod_cantidad * $value->prod_precio."</td>";
+		       		$html .= "	</tr>";
+		       		$total += $value->res_prod_cantidad * $value->prod_precio;
+	       		}
+			}
 
-		if ($data['paquetes']) {
-			foreach ($data['paquetes'] as $key) {
-       		$html .= "	<tr>";
-       		$html .= "		<td>".$key->paque_nombre."</td>";
-       		$html .= "		<td>".$key->res_paque_cantidad."</td>";
-       		$html .= "		<td>$".$key->res_paque_cantidad * $key->paque_precio."</td>";
-       		$html .= "	</tr>";
-       		$total += $key->res_paque_cantidad * $key->paque_precio;
-       		}
-		}
+			if ($data['servicios'][$num]) {
+				foreach ($data['servicios'][$num] as $value) {
+		       		$html .= "	<tr>";
+		       		$html .= "		<td>".$value->serv_nombre."</td>";
+		       		$html .= "		<td>".$value->res_serv_cantidad."</td>";
+		       		$html .= "		<td>$".$value->serv_precio."</td>";
+		       		$html .= "		<td>$".$value->res_serv_cantidad * $value->serv_precio."</td>";
+		       		$html .= "	</tr>";
+		       		$total += $value->res_serv_cantidad * $value->serv_precio;
+	       		}
+			}
+
+			if ($data['paquetes'][$num]) {
+				foreach ($data['paquetes'][$num] as $value) {
+		       		$html .= "	<tr>";
+		       		$html .= "		<td>".$value->paque_nombre."</td>";
+		       		$html .= "		<td>".$value->res_paque_cantidad."</td>";
+		       		$html .= "		<td>$".$value->paque_precio."</td>";
+		       		$html .= "		<td>$".$value->res_paque_cantidad * $value->paque_precio."</td>";
+		       		$html .= "	</tr>";
+		       		$total += $value->res_paque_cantidad * $value->paque_precio;
+	       		}
+			}
+
+			$html .= "	<tr>";
+	   		$html .= "		<td>Dias</td>";
+	   		$html .= "		<td>".$dias_diferencia."</td>";
+	   		$html .= "		<td>$".$precio_dias[$num]."</td>";
+	   		$html .= "		<td>$".$dias_diferencia * $precio_dias[$num]."</td>";
+	   		$html .= "	</tr>";
+
+	   		$total += $dias_diferencia * $precio_dias[$num];
+
+	   		$num++;
+	   	}
 
 		$html .= "	<tr>";
-   		$html .= "		<td>Dias</td>";
-   		$html .= "		<td>".$dias_diferencia."</td>";
-   		$html .= "		<td>$".$dias_diferencia * $precio_dias."</td>";
-   		$html .= "	</tr>";
-
-   		$total += $dias_diferencia * $precio_dias;
-
-		$html .= "	<tr>";
+   		$html .= "		<td></td>";
    		$html .= "		<td></td>";
    		$html .= "		<td>TOTAL</td>";
    		$html .= "		<td>$".$total."</td>";

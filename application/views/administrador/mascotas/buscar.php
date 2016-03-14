@@ -54,61 +54,66 @@
 									<div class="box text-shadow">
                                         <table class="demo-tbl"><!--<item>1</item>-->
                                             <?php 
-                                            foreach ($mascota as $key) {?>                                            
-                                                <tr class="tbl-item"><!--<img/>-->
-                                                    <!--<data></data>-->
-                                                    <td class="td-block"><p class="date"><strong>Dueño: </strong><?=$key['nombre_dueño']?> <?=$key['paterno']?> <?=$key['materno']?></p>
-                                                        <p class="title"><strong>Nombre:</strong> <?=$key['nombre']?></p>
-                                                        <?php  switch ($key['size']) {
-                                                            case '1':
-                                                                ?><p class="desc"><strong>Tamaño:</strong> Pequeño</p><?php
-                                                                break;
+                                            if($resultado){
+	                                            foreach ($mascota as $key) { ?>                                            
+	                                                <tr class="tbl-item"><!--<img/>-->
+	                                                    <!--<data></data>-->
+	                                                    <td class="td-block"><p class="date"><strong>Dueño: </strong><?=$key['nombre_dueño']?> <?=$key['paterno']?> <?=$key['materno']?></p>
+	                                                        <p class="title"><strong>Nombre:</strong> <?=$key['nombre']?></p>
+	                                                        <?php  switch ($key['size']) {
+	                                                            case '1':
+	                                                                ?><p class="desc"><strong>Tamaño:</strong> Pequeño</p><?php
+	                                                                break;
 
-                                                            case '2':
-                                                                ?><p class="desc"><strong>Tamaño:</strong> Mediano</p><?php
-                                                                break;
+	                                                            case '2':
+	                                                                ?><p class="desc"><strong>Tamaño:</strong> Mediano</p><?php
+	                                                                break;
 
-                                                            case '3':
-                                                                ?><p class="desc"><strong>Tamaño:</strong> Grande</p><?php
-                                                                break;
+	                                                            case '3':
+	                                                                ?><p class="desc"><strong>Tamaño:</strong> Grande</p><?php
+	                                                                break;
 
-                                                            case '4':
-                                                                ?><p class="desc"><strong>Tamaño:</strong> Extra grande</p><?php
-                                                                break;
+	                                                            case '4':
+	                                                                ?><p class="desc"><strong>Tamaño:</strong> Extra grande</p><?php
+	                                                                break;
 
-                                                            default:
-                                                                ?><p class="desc"><strong>Error</strong></p><?php
-                                                                break;
-                                                        }?>
-                                                        <p class="desc"><strong>Raza:</strong> <?=$key['raza']?></p>
-                                                        <?php if ($key['genero'] == 1) {
-                                                            ?><p class="desc"><strong>Genero:</strong> Macho</p><?php
-                                                        } else{
-                                                            ?><p class="desc"><strong>Genero:</strong> Hembra</p><?php
-                                                            }?>
-                                                        <p class="desc"><strong>Color:</strong> <?=$key['color']?></p>
-                                                        <p class="desc"><strong>Edad:</strong> <?=$key['edad']?></p>
-                                                        <p class="desc"><strong>Hora de comida:</strong> <?=$key['hora_comida']?></p>
-                                                        <?php if ($key['esterilizado'] == 1) {
-                                                            ?><p class="desc"><strong>Esta esterilizado</strong></p><?php
-                                                        } else{
-                                                            ?><p class="desc"><strong>No esta esterilizado</strong></p><?php
-                                                            }?>
-                                                        <?php if ($key['observaciones'] != NULL) {
-                                                            ?><p class="desc"><strong>Observaciones</strong> <?=$key['observaciones']?></p><?php
-                                                        } ?>
-                                                        <?php if ($key['agresivo'] == 1) {
-                                                            ?><p class="desc"><div class="col-lg-5 alert alert-danger"><strong>¡Cuidado! </strong>Es agresivo</div></p><?php
-                                                        }?>
-                                                        <?php if ($key['medicamento'] == 1) {
-                                                            ?><p class="desc"><div class="col-lg-5 alert alert-info"><strong>¡Info! </strong>Toma medicamentos</div></p></p><?php
-                                                        } ?>
-                                                        <ul class="list-inline pull-right">
-                                                                <li><a type="submit" class="btn btn-blue btn-sm" href="<?= site_url(); ?>/administradores/ver_usuario/<?=$key['us_id']?>">Ver cliente</a></li> 
-                                                            </ul>
-                                                    </td>
-                                                </tr>
-                                            <?php } ?>                           
+	                                                            default:
+	                                                                ?><p class="desc"><strong>Error</strong></p><?php
+	                                                                break;
+	                                                        }?>
+	                                                        <p class="desc"><strong>Raza:</strong> <?=$key['raza']?></p>
+	                                                        <?php if ($key['genero'] == 1) {
+	                                                            ?><p class="desc"><strong>Genero:</strong> Macho</p><?php
+	                                                        } else{
+	                                                            ?><p class="desc"><strong>Genero:</strong> Hembra</p><?php
+	                                                            }?>
+	                                                        <p class="desc"><strong>Color:</strong> <?=$key['color']?></p>
+	                                                        <p class="desc"><strong>Edad:</strong> <?=$key['edad']?></p>
+	                                                        <p class="desc"><strong>Hora de comida:</strong> <?=$key['hora_comida']?></p>
+	                                                        <?php if ($key['esterilizado'] == 1) {
+	                                                            ?><p class="desc"><strong>Esta esterilizado</strong></p><?php
+	                                                        } else{
+	                                                            ?><p class="desc"><strong>No esta esterilizado</strong></p><?php
+	                                                            }?>
+	                                                        <?php if ($key['observaciones'] != NULL) {
+	                                                            ?><p class="desc"><strong>Observaciones</strong> <?=$key['observaciones']?></p><?php
+	                                                        } ?>
+	                                                        <?php if ($key['agresivo'] == 1) {
+	                                                            ?><p class="desc"><div class="col-lg-5 alert alert-danger"><strong>¡Cuidado! </strong>Es agresivo</div></p><?php
+	                                                        }?>
+	                                                        <?php if ($key['medicamento'] == 1) {
+	                                                            ?><p class="desc"><div class="col-lg-5 alert alert-info"><strong>¡Info! </strong>Toma medicamentos</div></p></p><?php
+	                                                        } ?>
+	                                                        <ul class="list-inline pull-right">
+	                                                                <li><a type="submit" class="btn btn-blue btn-sm" href="<?= site_url(); ?>/administradores/ver_usuario/<?=$key['us_id']?>">Ver cliente</a></li> 
+	                                                            </ul>
+	                                                    </td>
+	                                                </tr>
+	                                        <?php }  
+                                        	}
+                                            else{   
+												?></br><h3>No se encontro lo que buscaba<h3><?php
+											}?>                           
                                         </table>
                                     </div>    
 								</div>

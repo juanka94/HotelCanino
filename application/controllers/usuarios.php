@@ -256,6 +256,30 @@ class Usuarios extends CI_Controller {
 					break;
 			}
 
+			$us_id = $datos->us_id;
+
+			$query = $this->usuarios_model->mas_id_usuario($us_id);
+
+			$id_mascota = array();
+
+			foreach ($query as $key => $value) {
+				$id_mascota[] = $value->mas_id;
+			}
+
+			$query = $this->usuarios_model->res_mascota($id_mascota);
+
+			$num = 0;
+
+			foreach ($query as $key) {
+				$data['mascota'][$num] = array(
+					'id' => $key->mas_id,
+					'nombre'=> $key->mas_nombre
+				);
+				$num++;
+			}
+
+			$data['num_mascota'] = $num;
+
 			$this->load->view('usuario/layers/header');
 			$this->load->view('usuario/layers/menu');
 			$this->load->view('usuario/reservaciones/reservar',$data);
@@ -300,18 +324,8 @@ class Usuarios extends CI_Controller {
 				'res_temporada' => $this->input->post('temporadas'),
 				'res_fecha_in' => $this->input->post('fech_in'),
 				'res_fecha_out' => $this->input->post('fech_out'),
-				'res_nom_mascota' => $this->input->post('nom_mascota'),
-				'res_size_mascota' => $this->input->post('tamaños'),
-				'res_raza_mascota' => $this->input->post('raza'),
-				'res_genero_mascota' => $this->input->post('generos'),
-				'res_observaciones' => $this->input->post('observaciones'),
-				'res_edad' => $this->input->post('edad'),
-				'res_color' => $this->input->post('color'),
-				'res_esterilizado' => $this->input->post('esterilizado'),
-				'res_agresivo' => $this->input->post('agresivo'),
-				'res_medicamento' => $this->input->post('medicamento'),
-				'res_hora_comida' => $this->input->post('hora_comida'),
-
+				'res_status' => 0,
+				'res_no_habitacion' => 0,
 				'res_id_usuario' => $datos->us_id
 			);
 		}
@@ -329,30 +343,45 @@ class Usuarios extends CI_Controller {
 		$id_res = $this->usuarios_model->ultima_reservacion();
 
 		foreach ($id_res as $key) {
-			$id_res = $key->res_id;
+			$data2['mas_res_id_res'] = $key->res_id;
+		}
+
+		$num = $this->input->post('num_mascota');
+		$id_serv_mas = 0; //Esta varible es para asignarle el servicio de recogida a domicilio a un perro
+
+		for ($i=0; $i <= $num; $i++) { 
+
+			$baño = $this->input->post('baño_salida'.$i);
+			$rev_veterinaria = $this->input->post('rev_veterinaria'.$i);
+
+			$data2['mas_res_id_mas'] = $this->input->post('mascota'.$i);
+
+			if ($data2['mas_res_id_mas']) {
+
+				$this->usuarios_model->insertar_mascotas_reservaciones($data2);
+				$id_serv_mas =  $this->input->post('mascota'.$i);
+				
+				if ($baño) {
+					$id_serv = 2;
+					$this->usuarios_model->add_servicio($data2['mas_res_id_res'], $id_serv, $data2['mas_res_id_mas']);
+				}
+
+				if ($rev_veterinaria) {
+					$id_serv = 7;
+					$this->usuarios_model->add_servicio($data2['mas_res_id_res'], $id_serv, $data2['mas_res_id_mas']);
+				}
+			}
 		}
 
 		if ($shipping == "true") {
 
 			if ($redondo){
-				$this->usuarios_model->add_servicio($id_res, $id_serv_redondo);
+				$this->usuarios_model->add_servicio($data2['mas_res_id_res'], $id_serv_redondo, $id_serv_mas);
 			}
 			else{
-				$this->usuarios_model->add_servicio($id_res, $id_serv_sencillo);
+				$this->usuarios_model->add_servicio($data2['mas_res_id_res'], $id_serv_sencillo, $id_serv_mas);
 			}
 		}
-
-		if ($baño) {
-			$id_serv = 2;
-			$this->usuarios_model->add_servicio($id_res, $id_serv);
-		}
-
-		if ($rev_veterinaria) {
-			$id_serv = 7;
-			$this->usuarios_model->add_servicio($id_res, $id_serv);
-		}
-
-
 		redirect('usuarios/reservar');
 	}
 
