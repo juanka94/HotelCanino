@@ -47,6 +47,14 @@ class Usuarios_model extends CI_Model {
 			return false;
 	}
 
+	public function insertar_mascota($data){
+
+		if($this->db->insert('mascotas',$data))
+			return true;
+		else
+			return false;
+	}
+
 	function obtener_usuario($id){
     	$this->db->where('us_id',$id);
         $query = $this->db->get('usuarios');

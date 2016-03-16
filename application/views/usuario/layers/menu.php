@@ -4,11 +4,13 @@
    <!--header start-->
 <header class="head-section">
   <div class="navbar navbar-default navbar-static-top container">
-    <div class="navbar-header">
+   <div class="navbar-header">
               <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
               type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span></button>
-    </div>
+              <span class="icon-bar"></span></button> <a class="navbar-brand" href=""><img src="<?= base_url() ?>assets/logo.png" width="100" height="100">
+
+              </a>
+          </div>
 
           <div class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
@@ -57,7 +59,7 @@
                       </a>
                       <ul class="dropdown-menu">
                           <li>
-                              <a href="<?= site_url()?>/usuarios/perfil">Mi perfil</a>
+                              <a href="<?= site_url()?>/usuarios/mi_perfil">Mi perfil</a>
                           </li>
 
                           <li>

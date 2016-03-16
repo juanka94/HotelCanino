@@ -10,7 +10,7 @@
               <div class="col-lg-12 col-sm-12">
 
                 <div class="video-container">
-                  <iframe width="854" height="480" src="https://www.youtube.com/embed/byo_-ubRn6c?autoplay=1" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="854" height="480" src="https://www.youtube.com/embed/byo_-ubRn6c" frameborder="0" allowfullscreen></iframe>
                   </iframe>
                 </div>
 

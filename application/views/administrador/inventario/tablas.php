@@ -78,9 +78,9 @@
 													<p class="desc"><?=$key->prod_descripcion?></p>
 													<p class="like col-md-3">Cantidad disponible: <?=$key->prod_cantidad?></p>
 													<ul class="list-inline pull-right">
-														<li><a class="btn btn-green btn-xs" href="<?=site_url()?>/administradores/cantidad_producto/<?=$key->prod_id?>/<?=$key->prod_cantidad?>">Agregar</a></li>
-														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/administradores/form_producto/<?=$key->prod_id?>">Modificar</a></li>
-														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/administradores/eliminar_producto/<?=$key->prod_id?>">Eliminar</a></li>
+														<li><a class="btn btn-green btn-xs" href="<?=site_url()?>/inventario/cantidad_producto/<?=$key->prod_id?>/<?=$key->prod_cantidad?>">Agregar</a></li>
+														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/inventario/form_producto/<?=$key->prod_id?>">Modificar</a></li>
+														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/inventario/eliminar_producto/<?=$key->prod_id?>">Eliminar</a></li>
 													</ul>
 												</td>
 											</tr>

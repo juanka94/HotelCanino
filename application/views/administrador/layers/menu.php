@@ -58,7 +58,7 @@
 
                     <li><a href="<?= site_url()?>/administradores/crear_admin"><i class="fa fa-user fa-fw">
                         <div class="icon-bg bg-blue"></div>
-                    </i><span class="menu-title">Usuarios Admin</span></a>
+                    </i><span class="menu-title">Administradores</span></a>
                           
                     </li>
                    

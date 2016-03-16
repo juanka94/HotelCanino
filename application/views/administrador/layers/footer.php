@@ -1,6 +1,6 @@
-   <!--END CONTENT-->
+ <!--END CONTENT-->
                 <!--BEGIN FOOTER-->
-                <div id="footer">
+                <div id="footer"> 
                     <div class="copyright">
                         <a href="">2016 © Hotel Canino Reyes</a></div>
                 </div>

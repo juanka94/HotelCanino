@@ -85,7 +85,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->cantidad_producto($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function form_producto()
@@ -120,7 +120,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->modificar_producto($prod_id, $data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function eliminar_producto()
@@ -129,7 +129,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->eliminar_producto($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function form_servicio()
@@ -162,7 +162,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->modificar_servicio($serv_id, $data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function eliminar_servicio()
@@ -171,7 +171,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->eliminar_servicio($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function form_paquete()
@@ -204,7 +204,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->modificar_paquete($paque_id, $data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function eliminar_paquete()
@@ -213,7 +213,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->eliminar_paquete($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function form_agregar()
@@ -235,7 +235,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->add_producto($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 	public function add_servicio()
@@ -246,7 +246,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->add_servicio($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 		public function add_paquete()
@@ -257,7 +257,7 @@ class Inventario extends CI_Controller {
 
 		$this->administradores_model->add_paquete($data);
 
-		header('Location: http://localhost/hotelcaninoreyes/index.php/inventario');
+		header('Location: http://localhost/HotelCanino/index.php/inventario');
 	}
 
 }

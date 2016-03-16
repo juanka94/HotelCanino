@@ -146,7 +146,12 @@
                  <h3 id="total_redondo">Precio viaje sencillo:</h3>
                  <h3 id="total_sencillo">Precio viaje redondo:</h3>
                  <hr/>
-                 Al recervar acepta Terminos y Condiciones <a href="" data-toggle="modal" data-target="#myModal">leer</a>
+                 <div class="checkbox">
+                     <label>
+                         <input type="checkbox" value="">
+                         Aceptas Terminos y Condiciones <a href="" data-toggle="modal" data-target="#myModal">leer</a>
+                     </label>
+                 </div>
                  </br></br>
                 <?= form_submit('', 'reservar',$submit) ?>
                
