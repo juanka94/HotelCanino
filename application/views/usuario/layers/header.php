@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="cosmic">
     <meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
-    
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/icono.png">
+
 
     <title>
       Hotel Canino Reyes
@@ -17,7 +18,8 @@
     <link href="<?= base_url() ?>assets/user/css/theme.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/user/css/bootstrap-reset.css" rel="stylesheet">
     <!--external css-->
-    <link href="<?= base_url() ?>assets/user/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <!--<link href="<?= base_url() ?>assets/user/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />-->
+    <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/font-awesome.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>assets/user/css/flexslider.css"/>
     <link href="<?= base_url() ?>assets/user/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url() ?>assets/user/css/animate.css">

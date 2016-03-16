@@ -438,6 +438,46 @@ class Usuarios extends CI_Controller {
 		}
 	}
 
+	public function agregar_mascota()
+	{
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/usuarios/agregar_mascota');
+		$this->load->view('usuario/layers/footer');	
+	}
+
+	public function addmascota()
+	{
+		if(!empty($_POST)) {
+			$data = array(
+				'mas_nombre'=> $this->input->post('nombre_mascota'),
+				'mas_raza'=> $this->input->post('raza_mascota'),
+				'mas_genero'=> $this->input->post('genero_mascota'),
+				'mas_color'=> $this->input->post('color_mascota'),
+				'mas_edad'=> $this->input->post('edad_mascota'),
+				'mas_hora_comida'=> $this->input->post('hora_comida_mascota'),
+				'mas_size'=> $this->input->post('tamaño_mascota'),
+				'mas_esterilizado'=> $this->input->post('esterilizado_mascota'),
+				'mas_agresivo'=> $this->input->post('agresivo_mascota'),
+				'mas_medicamento'=> $this->input->post('medicamento_mascota'),
+				'mas_observaciones'=> $this->input->post('observaciones_mascota'),
+				'mas_id_usuario'=> $this->input->post('id_usuario')
+				
+				);
+		}
+		if($this->usuarios_model->insertar_mascota($data))
+		redirect('usuarios/reservar');
+	}
+
+	public function mi_perfil()
+	{
+		
+		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/menu');
+		$this->load->view('usuario/usuarios/perfil');
+		$this->load->view('usuario/layers/footer');	
+	}
+
 	public function contacto()
 	{
 		$this->load->view('usuario/layers/header');
