@@ -1,4 +1,57 @@
 <div></br></div>
+<div class="container">
+      <div class="row mar-b-50">
+        <div class="col-md-12">
+          <div class="text-center feature-head wow fadeInDown">
+            <h1 class="">
+              HOTEL CANINO REYES
+            </h1>
+
+          </div>
+
+
+          <div class="feature-box">
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+              <div class="feature-box-heading">
+                <em>
+                <img src="<?= base_url() ?>assets/user/img/hospedaje.png" alt="" width="100" height="100">
+
+                </em>
+                <h4>
+                  <b>Hospedaje</b>
+                </h4>
+              </div>
+                Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris.
+            </div>
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+              <div class="feature-box-heading">
+                <em>
+                  <img src="<?= base_url() ?>assets/user/img/guarderia.png" alt="" width="100" height="100">
+                </em>
+                <h4>
+                  <b>Guarderia</b>
+                </h4>
+              </div>
+                Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris.
+            </div>
+            <div class="col-md-4 col-sm-4 text-center wow fadeInUp">
+              <div class="feature-box-heading">
+                <em>
+                  <img src="<?= base_url() ?>assets/user/img/entrenamiento.png" alt="" width="100" height="100">
+                </em>
+                <h4>
+                  <b>Entrenamiento</b>
+                </h4>
+              </div>
+                Lorem ipsum dolor sit amet, dolore eiusmod quis tempor incididunt ut et dolore Ut veniam unde nostrudlaboris.
+            </div>
+          </div>
+
+          <!--feature end-->
+        </div>
+      </div>
+    </div>
+
     <!--container start-->
     <div class="container">
       <div class="row">
