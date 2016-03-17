@@ -113,8 +113,11 @@
                 <br/>
 
                 <input id="shipping_cost" class="currency optional" type="text" name="shipping_cost" disabled="disabled"
-                value="<?=($datos->us_dom_calle);?>">
+                value="<?=($datos->us_dom_calle);?>"><a href="" data-toggle="modal" data-target="#myModal2"> Este no es mi domicilio</a>
+
                 </input>
+
+
 
                 <!--
                 <select id="item_shipping_cost" class="currency optional" type="text" name="item[shipping_cost]" disabled="disabled">
@@ -194,3 +197,31 @@ GRACIAS POR SU PREFERENCIA
 </div>/
 </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"> Servicio a Domicilio</h4>
+      </div>
+        <div class="modal-body">
+        <p style="text-align: justify;">
+        En caso de no ser el domicilio mostrado el domicilio donde quieres que recoja a tu mascota, procede lo siguiente: </br>
+        1.- Localiza tu nombre de usuario ubicado en la parte superio derecha.</br>
+        2.- Ingresas a la opcion llamada <strong>Mi Perfil</strong>.</br>
+        3.- Posteriormente a la opcion llamada <strong> Editar mi perfil</strong>, y cambiamos el apartado domicilio a donde se quiere que se aplique el servicio a domicilio.</br></br>
+
+        <h2>Si tienes alguna duda no dudes en preguntarnos puedes contactarnos por telefono o envianos un correo</h2></br>
+        Celular : (044) 312 140 60 16</br>
+        
+        Telefono : (312) 30 8 16 00</br>
+
+        Email : contacto@hotelcaninoreyes.com
+        </p>
+        </div>
+    </div>/
+  </div>
+</div>
+

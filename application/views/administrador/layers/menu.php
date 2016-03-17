@@ -9,7 +9,7 @@
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
             <div class="navbar-header">
                 <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <a id="logo" href="" class="navbar-brand"><span class="fa fa-rocket"></span><span class="" >Hotel Canino Reyes</span><span style="display: none" class="logo-text-icon"></span></a></div>
+                <a id="logo" href="<?= site_url()?>/administradores/" class="navbar-brand"><span class="fa fa-rocket"></span><span class="" >Hotel Canino Reyes</span><span style="display: none" class="logo-text-icon"></span></a></div>
             <div class="topbar-main"><a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
                 <ul class="nav navbar navbar-top-links navbar-right mbn">
                     <li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="<?= base_url()?>assets/admin/images/avatar/48.jpg" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs">Hola! <?php echo($datos->admin_nombre);?></span>&nbsp;<span class="caret"></span></a>

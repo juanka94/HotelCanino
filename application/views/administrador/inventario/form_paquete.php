@@ -40,7 +40,7 @@ $hidden = array('id' => $paquete['id']);
                                 <div class="col-md-9">
                                     <div id="generalTabContent" class="tab-content">
                                         <div id="tab-edit" class="tab-pane fade in active">
-                                            <?= (form_open('administradores/modificar_paquete',$form, $hidden)); ?>
+                                            <?= (form_open('inventario/modificar_paquete',$form, $hidden)); ?>
                                                <h3>paquete</h3>
                                                 <div class="form-group"><?= (form_label('Nombre del paquete','',$label));  ?>
                                                     <div class="col-sm-9 controls">
