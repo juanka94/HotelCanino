@@ -1,46 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="cosmic">
-    <meta name="keywords" content="Bootstrap 3, Template, Theme, Responsive, Corporate, Business">
-    <link rel="shortcut icon" href="<?= base_url() ?>assets/icono.png">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>Hotel Canino Reyes</title>
+  <link href="<?= base_url() ?>assets/user/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/user/css/animate.min.css" rel="stylesheet"> 
+  <link href="<?= base_url() ?>assets/user/css/font-awesome.min.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/user/css/lightbox.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/user/css/main.css" rel="stylesheet">
+  <link id="css-preset" href="<?= base_url() ?>assets/user/css/presets/preset1.css" rel="stylesheet">
+  <link href="<?= base_url() ?>assets/user/css/responsive.css" rel="stylesheet">
 
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+  
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/user/images/imagenes/logos/icono.png">
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/datetimepicker-master/jquery.datetimepicker.css">
+</head><!--/head-->
 
-    <title>
-      Hotel Canino Reyes
-    </title>
+<body>
 
-    <!-- Bootstrap core CSS -->
-    <link href="<?= base_url() ?>assets/user/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/user/css/theme.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/user/css/bootstrap-reset.css" rel="stylesheet">
-    <!--external css-->
-    <!--<link href="<?= base_url() ?>assets/user/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />-->
-    <link type="text/css" rel="stylesheet" href="<?= base_url(); ?>assets/admin/styles/font-awesome.min.css">
-    <link rel="stylesheet" href="<?= base_url() ?>assets/user/css/flexslider.css"/>
-    <link href="<?= base_url() ?>assets/user/assets/bxslider/jquery.bxslider.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<?= base_url() ?>assets/user/css/animate.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="<?= base_url() ?>assets/user/assets/owlcarousel/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/user/css/mixitup.css">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/user/css/component.css">
-    <link href="<?= base_url() ?>assets/user/css/style.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/user/css/style-responsive.css" rel="stylesheet" />
-    <link rel="stylesheet" href="<?= base_url() ?>assets/user/css/magnific-popup.css">
-    
-    <!--Datapicker-->
-    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/datetimepicker-master/jquery.datetimepicker.css"/>
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/html5shiv.js"></script>
-      <script src="js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
+  <!--.preloader-->
+  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+  <!--/.preloader-->
     

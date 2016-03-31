@@ -14,7 +14,7 @@ class Administradores extends CI_Controller {
 
 	public function index()
 	{
-		if(!$this->session->userdata('logged_user')){
+		if(!$this->session->userdata('logged_admin')){
 			redirect('administradores/login');
 		}else{
 
@@ -62,27 +62,30 @@ class Administradores extends CI_Controller {
 		}
 
 		$query = $this->administradores_model->us_mascota($us_id);
-
-		$num = 0;
-
-		foreach ($query as $key) {
-			$data['mascota'][$num] = array(
-				'id' => $key->mas_id,
-				'nombre'=> $key->mas_nombre,
-				'size'=> $key->mas_size,
-				'raza'=> $key->mas_raza,
-				'genero'=> $key->mas_genero,
-				'color'=> $key->mas_color,
-				'edad'=> $key->mas_edad,
-				'hora_comida'=> $key->mas_hora_comida,
-				'esterilizado'=> $key->mas_esterilizado,
-				'agresivo'=> $key->mas_agresivo,
-				'medicamento'=> $key->mas_medicamento,
-				'observaciones'=> $key->mas_observaciones,
-			);
-			$num++;
+		if ($query) {
+			$num = 0;
+			foreach ($query as $key) {
+				$data['mascota'][$num] = array(
+					'id' => $key->mas_id,
+					'nombre'=> $key->mas_nombre,
+					'size'=> $key->mas_size,
+					'raza'=> $key->mas_raza,
+					'genero'=> $key->mas_genero,
+					'color'=> $key->mas_color,
+					'edad'=> $key->mas_edad,
+					'hora_comida'=> $key->mas_hora_comida,
+					'esterilizado'=> $key->mas_esterilizado,
+					'agresivo'=> $key->mas_agresivo,
+					'medicamento'=> $key->mas_medicamento,
+					'observaciones'=> $key->mas_observaciones,
+				);
+				$num++;
+			}
+			
+		}else{
+			$data['mascota']=0;
 		}
-
+		
 		$this->load->view('administrador/layers/header');
 		$this->load->view('administrador/layers/menu');
 		$this->load->view('administrador/usuario/ver_usuario',$data);
@@ -260,7 +263,7 @@ class Administradores extends CI_Controller {
 	//NUEVO
 	public function crear_admin()
 	{
-		if(!$this->session->userdata('logged_user')){
+		if(!$this->session->userdata('logged_admin')){
 			redirect('administradores/login');
 		}else{
 		$this->load->view('administrador/layers/header');
@@ -295,10 +298,10 @@ class Administradores extends CI_Controller {
 			
 			if ($this->form_validation->run() == TRUE) {
 				
-				$logged_user = $this->administradores_model->get($_POST['name'], $_POST['password']);
+				$logged_admin = $this->administradores_model->get($_POST['name'], $_POST['password']);
 
-				if($logged_user) {
-					$this->session->set_userdata('logged_user', $logged_user);
+				if($logged_admin) {
+					$this->session->set_userdata('logged_admin', $logged_admin);
 					redirect('administradores/index');
 				} else {
 					redirect('administradores/login');
@@ -311,7 +314,7 @@ class Administradores extends CI_Controller {
 	}
 
 	public function logout() {
-		$this->session->unset_userdata('logged_user');
+		$this->session->unset_userdata('logged_admin');
 		$this->session->sess_destroy();
 		redirect('administradores/login');
 	}
@@ -341,7 +344,7 @@ class Administradores extends CI_Controller {
 
 	public function crear_cliente()
 	{
-		if(!$this->session->userdata('logged_user')){
+		if(!$this->session->userdata('logged_admin')){
 			redirect('administradores/login');
 		}else{
 		$this->load->view('administrador/layers/header');
@@ -362,12 +365,12 @@ class Administradores extends CI_Controller {
 
 	public function perfil()
 	{
-		if (!$this->session->userdata('logged_user')){
+		if (!$this->session->userdata('logged_admin')){
 	        redirect('administradores/login');
 	    }else{
 	    	$this->load->view('administrador/layers/header');
 			$this->load->view('administrador/layers/menu');
-	    	$datos = $this->session->userdata('logged_user');
+	    	$datos = $this->session->userdata('logged_admin');
 	    	$id = $datos->admin_id;
 			$usuario = $this->administradores_model->obtener_user_admin($id);  
 			    $Datousuario = array();

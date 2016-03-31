@@ -1,59 +1,110 @@
-<!--breadcrumbs start-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-sm-4">
-                    <h1>Crear usuario</h1>
-                </div>
-                <div class="col-lg-8 col-sm-8">
-                    <ol class="breadcrumb pull-right">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Features</a></li>
-                        <li class="active">Login</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--breadcrumbs end-->
-    <?php 
-      $form = array('class' =>'form-signin wow fadeInUp');
-      $submit = array('class' =>'btn btn-lg btn-login btn-block');
+   <?php 
+        $datos = $this->session->userdata('logged_user');
+      $form = array('name'=>'contact-form');
+      $submit = array('class' =>'btn btn-submit');
      ?>
-    <!--container start-->
-    <div class="login-bg">
-        <div class="container">
-
-
-            <div class="form-wrapper">
-            <?= form_open('usuarios/addusuario',$form) ?>
-            <h2 class="form-signin-heading">Crear Usuario </h2> 
-
-            <div class="login-wrap">
-                <input type="text" name="nom_usuario"  class="form-control" value="<?php echo @$_POST['nom_usuario']; ?>" placeholder="Nombre" autofocus>
-                <input type="text" name="ap_paterno"  class="form-control" value="<?php echo @$_POST['ap_paterno']; ?>" placeholder="A. Paterno" autofocus>
-                <input type="text" name="ap_materno"  class="form-control" value="<?php echo @$_POST['ap_materno']; ?>" placeholder="A. Materno" autofocus>
-                <input type="text" name="tel_casa"  class="form-control" value="<?php echo @$_POST['tel_casa']; ?>" placeholder="Tel. Casa" autofocus>
-                <input type="text" name="tel_celular"  class="form-control" value="<?php echo @$_POST['tel_celular']; ?>" placeholder="Tel. Celula" autofocus>
-                <input type="text" name="email"  class="form-control" value="<?php echo @$_POST['email']; ?>" placeholder="Correo" autofocus>
-                <input type="password" name="password"  class="form-control" value="<?php echo @$_POST['password']; ?>" placeholder="Contraseña" autofocus>
-                <input type="text" name="dom_calle"  class="form-control" value="<?php echo @$_POST['dom_calle']; ?>" placeholder="Domicilio Calle" autofocus>
-                <input type="text" name="localidad"  class="form-control" value="<?php echo @$_POST['localidad']; ?>" placeholder="Localidad" autofocus>
-                <input type="text" name="municipio"  class="form-control" value="<?php echo @$_POST['municipio']; ?>" placeholder="Municipio" autofocus>
-                <input type="text" name="estado"  class="form-control" value="<?php echo @$_POST['estado']; ?>" placeholder="Estado" autofocus>
-
-                <?= form_submit('', 'Crear',$submit) ?>
-                <div class="registration">
-                    Si tengo cuenta XD
-                    <a class="" href="<?= site_url()?>/usuarios/login">
-                        Entrar
-                    </a>
-                </div>
-
-            </div>
-
-          <?php echo (form_close()); ?>
+    <div id="contact-us" class="parallax">
+      <div class="container login">
+        <div class="row">
+          <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <h2>Agregar Usuario</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
           </div>
         </div>
-    </div>
-    <!--container end-->
+        <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+          <div class="row">
+            <div class="col-sm-12">
+            <?= form_open_multipart('usuarios/addusuario',$form) ?>
+              <h3>Informacion Personal</h3>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" name="nom_usuario" class="form-control" placeholder="Nombre (s)" required="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" name="ap_paterno" class="form-control" placeholder="Apellido Paterno" required="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <input type="text" name="ap_materno" class="form-control" placeholder="Apellido Materno" required="required">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="tel" name="tel_casa" class="form-control" placeholder="Tel. Casa">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="tel" name="tel_cel" class="form-control" placeholder="Tel. Celular" required="required">
+                    </div>
+                  </div>
+                </div>
+                <h3>Domicilio</h3>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="text" name="dom_calle" class="form-control" placeholder="Calle y No.">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="text" name="localidad" class="form-control" placeholder="Localidad">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <select name="municipio" id="inputMunicipio" class="form-control">
+                        <option value="Colima"> Colima </option>
+                        <option value="Villa de Alvarez"> Villa de Alvarez </option>
+                        <option value="Coquimatlan"> Coquimatlan </option>
+                        <option value="Comala"> Comala </option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="text" name="estado" class="form-control" placeholder="Estado">
+                    </div>
+                  </div>
+                </div> 
+                <h3>Datos para iniciar sesion</h3>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input type="email" name="email" class="form-control" placeholder="Correo Electronico" required="required">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="password" name="password" class="form-control" placeholder="Contraseña" required="required">
+                    </div>
+                  </div>
+                    <?= @validation_errors(); ?>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="password" name="confpassword" class="form-control" placeholder="Confirmar Contraseña" required="required">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                   <div class="col-sm-2">
+                    <label>Agregar Foto de Perfil</label>
+                   </div>
+                   <div class="col-sm-3">
+                    <input type="file" name="imagen_usuario" />
+                   </div>
+                </div>
+                <div class="form-group">
+                <?= form_submit('', 'Crear',$submit) ?>
+                </div>
+               <?php echo (form_close()); ?>   
+            </div>
+        </div>
+      </div>
+    </div>        

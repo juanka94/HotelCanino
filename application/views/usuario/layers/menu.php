@@ -1,76 +1,37 @@
-   <?php 
-        $datos = $this->session->userdata('logged_user');
-?>
-   <!--header start-->
-<header class="head-section">
-  <div class="navbar navbar-default navbar-static-top container">
-   <div class="navbar-header">
-              <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse"
-              type="button"><span class="icon-bar"></span> <span class="icon-bar"></span>
-              <span class="icon-bar"></span></button> <a class="navbar-brand" href=""><img src="<?= base_url() ?>assets/logo.png" width="100" height="100">
+<?php $datos = $this->session->userdata('logged_user'); ?>
 
-              </a>
-          </div>
-
-          <div class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                  <li>
-                      <?= anchor('usuarios/index', 'Inicio')?>
-                  </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Servicios <i class="fa fa-angle-down"></i>
-                      </a>
-
-                      <ul class="dropdown-menu">
-                          <li >
-                              <a href="<?= site_url()?>/usuarios/hospedaje">Hospedaje</a>
-                          </li>
-
-                          <li>
-                              <a href="<?= site_url()?>/usuarios/guarderia">Guarderia</a>
-                          </li>
-                           <li>
-                              <a href="<?= site_url()?>/usuarios/entrenamiento">Entrenamiento</a>
-                          </li>
-                      </ul>
-                  </li>
-
-                  
-                  <li>
-                      <a href="<?= site_url()?>/usuarios/galeria">Galeria</a>
-                  </li>
-                   <li>
-                      <a href="<?= site_url()?>/usuarios/reservar">Reservar</a>
-                  </li>
-                  <li>
-                      <a href="<?= site_url()?>/usuarios/contacto">Contacto</a>
-                  </li>
-
-                  <li><input class="form-control search" placeholder=" Buscar" type="text"></li>
-                    <?php if (!$this->session->userdata('logged_user')){?>
-                  <li>
-                      <a href="<?= site_url()?>/usuarios/login"><i class="fa fa-user pr-10"></i> Iniciar Sesion</a>
-                  </li>
-                  <?php }else {?>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle" data-close-others="false" data-delay="0" data-hover=
-                      "dropdown" data-toggle="dropdown" href="#">Hola! <?php echo($datos->us_nombre);?></i>
-                      </a>
-                      <ul class="dropdown-menu">
-                          <li>
-                              <a href="<?= site_url()?>/usuarios/mi_perfil">Mi perfil</a>
-                          </li>
-
-                          <li>
-                              <a href="<?= site_url()?>/usuarios/logout">Cerrar Sesion</a>
-                          </li>
-
-                      </ul>
-                  </li>
-                  <?php } ?>
-              </ul>
-          </div>
-  </div>
-</header>
-    <!--header end-->
+<div class="main-nav">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">
+            <!--<h1><img class="img-responsive" src="imagenes/logos/logo.png" alt="logo"></h1>-->
+          </a>                    
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">                 
+            <li class="scroll active"><a href="<?= site_url()?>/usuarios/">Inicio</a></li>                 
+            <li class="scroll"><a href="<?= site_url()?>/usuarios/galeria">Galeria</a></li>
+            <li class="scroll"><a href="<?= site_url()?>/usuarios/reservar">Reservar</a></li> 
+            <li class="scroll"><a href="<?= site_url()?>/usuarios/contacto">Contacto</a></li>
+            <?php if (!$this->session->userdata('logged_user')){?>
+            <li class="scroll"><a href="<?= site_url()?>/usuarios/login">login</a></li>   
+            <?php }else {?>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Hola! <?php echo($datos->us_nombre);?> <span class="glyphicon glyphicon-user" aria-hidden="true"></span><span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="<?= site_url()?>/usuarios/mi_perfil" style="color: black;">Mi perfil</a></li>
+              <li><a href="<?= site_url()?>/usuarios/logout" style="color: black;">Cerrar sesion</a></li>
+            </ul>
+            </li>
+            <?php } ?>
+          </ul>
+        </div>
+      </div>
+    </div><!--/#main-nav-->
+  

@@ -159,7 +159,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-9">
+                        <?php if ($mascota) { ?>
+                          <div class="col-lg-9">
                             <div class="panel">
                                 <div class="panel-body">
                                     <div id="grid-layout-table-1" class="box jplist">
@@ -229,7 +230,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>   
+                        </div>    
+                        <?php }?>
+                         
                     </div>
                 </div>
             </div>

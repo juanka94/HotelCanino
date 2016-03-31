@@ -61,6 +61,12 @@ class Usuarios_model extends CI_Model {
         return $query->result_array();
     }
 
+    function obtener_mascota($id){
+    	$this->db->where('mas_id_usuario',$id);
+        $query = $this->db->get('mascotas');
+        return $query->result_array();
+    }
+
     function actualizar_usuario($data){
 	  	$datos = $this->session->userdata('logged_user');
 	    $id=$datos->us_id;        

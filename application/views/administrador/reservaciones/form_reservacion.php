@@ -38,7 +38,8 @@
                                 <div class="col-md-9">
                                     <div id="generalTabContent" class="tab-content">
                                         <div id="tab-edit" class="tab-pane fade in active">
-                                            <h3>Agregar mascota</h3>
+
+                                            <h3>Agregar reservacion</h3>
                                              <div class="form-group"><?= (form_label('Fecha de entrada','',$label));  ?>
                                                 <div class="col-sm-9 controls">
                                                     <div class="row">

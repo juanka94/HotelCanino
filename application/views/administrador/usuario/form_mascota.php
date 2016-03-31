@@ -38,6 +38,9 @@
                                     <div id="generalTabContent" class="tab-content">
                                         <div id="tab-edit" class="tab-pane fade in active">
                                             <?= form_open('administradores/agregar_mascota',$form,$hidden) ?>
+                                            <?php if($mensaje) {?>
+                                               <div class="alert alert-warning" role="alert"><strong><?=$mensaje; ?></strong></div>
+                                            <?php } ?>
                                             <h3>Agregar mascota</h3>
                                             <div class="form-group"><?= (form_label('Nombre de la mascota','',$label));  ?>
                                                 <div class="col-sm-9 controls">

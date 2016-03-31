@@ -252,16 +252,17 @@ class Reservaciones extends CI_Controller {
 		$query = $this->administradores_model->mas_id_usuario($data['us_id']);
 
 		$id_mascota = array();
-
-		foreach ($query as $key => $value) {
+		if ($query) {
+			foreach ($query as $key => $value) {
 			$id_mascota[] = $value->mas_id;
+			}
+			$query = $this->administradores_model->res_mascota($id_mascota);
 		}
-
-		$query = $this->administradores_model->res_mascota($id_mascota);
+		
 
 		$num = 0;
-
-		foreach ($query as $key) {
+		if ($query) {
+			foreach ($query as $key) {
 			$data['mascota'][$num] = array(
 				'id' => $key->mas_id,
 				'nombre'=> $key->mas_nombre,
@@ -274,15 +275,25 @@ class Reservaciones extends CI_Controller {
 				'esterilizado'=> $key->mas_esterilizado,
 				'agresivo'=> $key->mas_agresivo,
 				'medicamento'=> $key->mas_medicamento,
-				'observaciones'=> $key->mas_observaciones,
-			);
+				'observaciones'=> $key->mas_observaciones,);
 			$num++;
-		}
+			}
 
-		$this->load->view('administrador/layers/header');
-		$this->load->view('administrador/layers/menu');
-		$this->load->view('administrador/reservaciones/form_reservacion',$data);
-		$this->load->view('administrador/layers/footer');
+			$this->load->view('administrador/layers/header');
+			$this->load->view('administrador/layers/menu');
+			$this->load->view('administrador/reservaciones/form_reservacion',$data);
+			$this->load->view('administrador/layers/footer');
+		}else{
+			$data['us_id'] = $this->uri->segment(3);
+			$data['mensaje']="Este usuario no cuenta con un perro, favor de agregar uno para la reservacion";
+			$this->load->view('administrador/layers/header');
+			$this->load->view('administrador/layers/menu');
+			$this->load->view('administrador/usuario/form_mascota',$data);
+			$this->load->view('administrador/layers/footer');
+		}
+		
+
+		
 	}
 
 	public function agregar_reservacion()

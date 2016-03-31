@@ -1,5 +1,5 @@
    <?php 
-        $datos = $this->session->userdata('logged_user');
+        $datos = $this->session->userdata('logged_admin');
 ?>
 <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
