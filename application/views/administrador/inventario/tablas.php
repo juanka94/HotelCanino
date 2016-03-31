@@ -58,7 +58,7 @@
 									<?= form_submit('', 'Buscar',$submit);?>
 									<?= form_close();?>
 									</br>
-									<?= form_open('administradores/form_agregar', '');?>
+									<?= form_open('inventario/form_agregar', '');?>
 									<div class="col-md-2">
 										<div class="form-group">
 											<?= form_dropdown('tabla2', $options2, '', $select);?>
@@ -96,8 +96,8 @@
 													<p class="title">Servicio: <?=$key->serv_nombre?></p>
 													<p class="desc"><?=$key->serv_descripcion?></p>
 													<ul class="list-inline pull-right">
-														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/administradores/form_servicio/<?=$key->serv_id?>">Modificar</a></li>
-														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/administradores/eliminar_servicio/<?=$key->serv_id?>">Eliminar</a></li>
+														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/inventario/form_servicio/<?=$key->serv_id?>">Modificar</a></li>
+														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/inventario/eliminar_servicio/<?=$key->serv_id?>">Eliminar</a></li>
 													</ul>
 												</td>
 											</tr>
@@ -113,8 +113,8 @@
 													<p class="title">Paquete: <?=$key->paque_nombre?></p>
 													<p class="desc"><?=$key->paque_descripcion?></p>
 													<ul class="list-inline pull-right">
-														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/administradores/form_paquete/<?=$key->paque_id?>">Modificar</a></li>
-														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/administradores/eliminar_paquete/<?=$key->paque_id?>">Eliminar</a></li>
+														<li><a class="btn btn-yellow btn-xs" href="<?=site_url()?>/inventario/form_paquete/<?=$key->paque_id?>">Modificar</a></li>
+														<li><a class="btn btn-red btn-xs" href="<?=site_url()?>/inventario/eliminar_paquete/<?=$key->paque_id?>">Eliminar</a></li>
 													</ul>
 												</td>
 											</tr>
