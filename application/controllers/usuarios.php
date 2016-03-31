@@ -470,26 +470,6 @@ class Usuarios extends CI_Controller {
 
 	public function addmascota()
 	{
-		$mi_imagen = 'imagen_perro';
-        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perros';
-        $config['file_name'] = "imagen_perro";
-        $config['allowed_types'] = "gif|jpg|jpeg|png";
-        $config['max_size'] = "50000";
-        $config['max_width'] = "2000";
-        $config['max_height'] = "2000";
-
-	$this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload($mi_imagen)) {
-            //*** ocurrio un error
-            $data['uploadError'] = $this->upload->display_errors();
-            echo $this->upload->display_errors();
-            return;
-        }else{
-
-        $data['uploadSuccess'] = $this->upload->data();
-	}
-
 		if(!empty($_POST)) {
 			$data = array(
 				'mas_nombre'=> $this->input->post('nombre_mascota'),
@@ -503,12 +483,35 @@ class Usuarios extends CI_Controller {
 				'mas_agresivo'=> $this->input->post('agresivo_mascota'),
 				'mas_medicamento'=> $this->input->post('medicamento_mascota'),
 				'mas_observaciones'=> $this->input->post('observaciones_mascota'),
-				'mas_img'=>$mi_imagen,
 				'mas_id_usuario'=> $this->input->post('id_usuario')
 				
 				);
 		}
-		if($this->usuarios_model->insertar_mascota($data))
+		$this->usuarios_model->insertar_mascota($data);
+
+		$query=$this->usuarios_model->ultima_mascota();
+		foreach ($query as $key => $value) {
+			$id_mascota=$value;
+		}
+		$mi_imagen = 'imagen_perro';
+        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perros';
+        $config['file_name'] = $id_mascota->mas_id;
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+
+		$this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_imagen)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        }else{
+
+        $data['uploadSuccess'] = $this->upload->data();
+		}	
 		redirect('usuarios/reservar');
 	}
 

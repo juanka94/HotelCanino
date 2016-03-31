@@ -61,6 +61,12 @@
                     </i><span class="menu-title">Administradores</span></a>
                           
                     </li>
+
+                    <li><a href="<?= site_url()?>/administradores/crear_admin"><i class="fa fa-image fa-fw">
+                        <div class="icon-bg bg-blue"></div>
+                    </i><span class="menu-title">Galeria de Imagenes</span></a>
+                          
+                    </li>
                    
                     <li><a href="<?= site_url()?>/inventario"><i class="fa fa-bar-chart-o fa-fw">
                         <div class="icon-bg bg-orange"></div>
