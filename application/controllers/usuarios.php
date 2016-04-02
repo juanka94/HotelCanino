@@ -289,26 +289,6 @@ class Usuarios extends CI_Controller {
 
 	public function addusuario()
 	{
-		$mi_imagen_perfil = 'imagen_usuario';
-        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perfil';
-        $config['file_name'] = "imagen_usuario";
-        $config['allowed_types'] = "gif|jpg|jpeg|png";
-        $config['max_size'] = "50000";
-        $config['max_width'] = "2000";
-        $config['max_height'] = "2000";
-
-		$this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload($mi_imagen_perfil)) {
-            //*** ocurrio un error
-            $data['uploadError'] = $this->upload->display_errors();
-            echo $this->upload->display_errors();
-            return;
-        }else{
-
-        $data['uploadSuccess'] = $this->upload->data();
-		}
-
 		if(!empty($_POST)) {
 			
 			$data = array(
@@ -319,7 +299,6 @@ class Usuarios extends CI_Controller {
 				'us_tel_cel'=> $this->input->post('tel_cel'),
 				'us_email'=> $this->input->post('email'),
 				'us_password'=> $this->input->post('password'),
-				'us_img'=>$mi_imagen_perfil,
 				'us_dom_calle'=> $this->input->post('dom_calle'),
 				'us_dom_localidad'=> $this->input->post('localidad'),
 				'us_dom_municipio'=> $this->input->post('municipio'),
@@ -327,7 +306,36 @@ class Usuarios extends CI_Controller {
 				
 				);
 		}
-		if($this->usuarios_model->insertar_usuario($data))
+		$this->usuarios_model->insertar_usuario($data);
+
+		$query=$this->usuarios_model->ultimo_usuario();
+		foreach ($query as $key => $value) {
+			$id_usuario=$value;
+		}
+		$id_usuario->us_id;
+
+		$mi_imagen = 'imagen_usuario';
+        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perfil';
+        $config['file_name'] = $id_usuario->us_id;
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+
+		$this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_imagen)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        }else{
+
+        $data['uploadSuccess'] = $this->upload->data();
+		}	
+
+
+
 		redirect('usuarios/reservar');
 	}
 
