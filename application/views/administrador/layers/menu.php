@@ -62,7 +62,7 @@
                           
                     </li>
 
-                    <li><a href="<?= site_url()?>/administradores/crear_admin"><i class="fa fa-image fa-fw">
+                    <li><a href="<?= site_url()?>/administradores/galeria"><i class="fa fa-image fa-fw">
                         <div class="icon-bg bg-blue"></div>
                     </i><span class="menu-title">Galeria de Imagenes</span></a>
                           

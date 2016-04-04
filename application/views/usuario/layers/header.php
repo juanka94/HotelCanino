@@ -26,7 +26,3 @@
 
 <body>
 
-  <!--.preloader-->
-  <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
-  <!--/.preloader-->
-    

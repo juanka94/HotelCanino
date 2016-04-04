@@ -13,6 +13,7 @@ class Usuarios extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/slider');
 		$this->load->view('usuario/layers/menu');
 		$this->load->view('usuario/layers/inicio');
 		$this->load->view('usuario/layers/footer');	

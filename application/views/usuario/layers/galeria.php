@@ -18,8 +18,7 @@
               <div class="overlay-content">
                 <div class="overlay-text">
                   <div class="folio-info">
-                    <h3>Time Hours</h3>
-                    <p>Design, Photography</p>
+                    <h3>Ver</h3>
                   </div>
                   <div class="folio-overview">
                     <span class="folio-expand"><a href="<?= base_url() ?>assets/user/images/imagenes/galeria/img1.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
