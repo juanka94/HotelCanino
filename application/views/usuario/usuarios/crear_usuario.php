@@ -100,6 +100,17 @@
                     <input type="file" name="imagen_usuario" />
                    </div>
                 </div>
+                <div class="row">
+                <div class="col-sm-5">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" value="" required="required">
+                     He leido la ley de conservacion de datos
+                    </label>
+                    <a data-toggle="modal" href='#modal-id'>Leer</a>
+                  </div>
+                </div>
+                </div>
                 <div class="form-group">
                 <?= form_submit('', 'Crear',$submit) ?>
                 </div>
@@ -107,4 +118,22 @@
             </div>
         </div>
       </div>
-    </div>        
+    </div>
+
+
+     <div class="modal fade" id="modal-id">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title">Ley de conservacion de datos</h4>
+           </div>
+           <div class="modal-body">
+             <p>Texto</p>
+           </div>
+           <div class="modal-footer">
+             <button type="button" class="btn btn-default" data-dismiss="modal">Acepto</button>
+           </div>
+         </div>
+       </div>
+     </div>     
