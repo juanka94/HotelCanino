@@ -139,6 +139,36 @@ class Usuarios_model extends CI_Model {
 		else		
 			return false;
     }
+
+    public function ultima_mascota()
+    {
+    	$this->db->select('m.mas_id');
+		$this->db->from('mascotas m');
+		$this->db->order_by('m.mas_id', 'DESC');
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+    }
+
+     public function ultimo_usuario()
+    {
+    	$this->db->select('u.us_id');
+		$this->db->from('usuarios u');
+		$this->db->order_by('u.us_id', 'DESC');
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+		else return FALSE;
+    }
 }
 
 /* End of file usuarios_model.php */

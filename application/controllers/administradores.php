@@ -244,9 +244,6 @@ class Administradores extends CI_Controller {
 		$data['us_dom_estado'] = $this->input->post('estado');
 		$data['us_tipo'] = $this->input->post('tipo');
 
-		var_dump($us_id);
-		var_dump($data);
-
 		$this->administradores_model->update_usuario($us_id, $data);
 
 		header('Location: http://localhost/HotelCanino/index.php/administradores/ver_usuario/'.$us_id);
@@ -430,6 +427,41 @@ class Administradores extends CI_Controller {
 		}else{
 			redirect('administradores/index');
 		}
+
+	}
+
+	public function galeria()
+	{
+		$this->load->view('administrador/layers/header');
+		$this->load->view('administrador/layers/menu');
+		$this->load->view('administrador/layers/galeria');
+		$this->load->view('administrador/layers/footer');
+	}
+
+	public function agregar_galeria()
+	{
+		$mi_imagen ='imagen_galeria';
+        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\galeria';
+        $config['file_name'] = "img_1";
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+
+		$this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_imagen)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        }else{
+
+        $data['uploadSuccess'] = $this->upload->data();
+		}	
+
+		if($this->administradores_model->insertar_imagen($mi_imagen));
+		redirect('usuarios','galeria');
 
 	}
 

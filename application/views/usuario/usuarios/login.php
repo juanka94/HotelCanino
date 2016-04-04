@@ -30,15 +30,8 @@
             </div>
             <div class="col-sm-6">
               <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                <ul class="address">
-                  <li><i class="fa fa-map-marker"></i> <span> Address:</span> 2400 South Avenue A </li>
-                  <li><i class="fa fa-phone"></i> <span> Phone:</span> +928 336 2000  </li>
-                  <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:someone@yoursite.com"> support@oxygen.com</a></li>
-                  <li><i class="fa fa-globe"></i> <span> Website:</span> <a class="" href="<?= site_url()?>/usuarios/crear_usuario">
-                        Crear una cuenta
-                    </a></li>
-                </ul>
+                <p>Ahora puedes unirte al sistema del hotel canino reyes y recibir informacion acerca de de tu canino en su estancia, ademas puedes reservar desde la comodidad de tu hogar.</p>
+                <p><h2>No tienes una cuenta? <a href="<?= site_url()?>/usuarios/crear_usuario">Unete</a></h2></p>
               </div>                            
             </div>
           </div>

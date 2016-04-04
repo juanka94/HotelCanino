@@ -872,6 +872,16 @@ class Administradores_model extends CI_Model {
 		$this->db->where('res_id', $id);
 		$this->db->update('reservaciones', $data);
 	}
+
+	public function insertar_imagen($imagen)
+	{
+		$sql="INSERT INTO galeria ('id_galeria','nombre_img') VALUES (NULL,'$imagen')";
+
+		if($sql)
+			return true;
+		else		
+			return false;
+	}
 }
 
 /* End of file administradores.php */

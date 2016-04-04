@@ -29,7 +29,7 @@
           <tr>
             <td><?=$num; ?></td>
             <td><?=$key['mas_nombre']?></td>
-            <td><img src="<?= base_url();?>assets/user/images/imagenes/perros/" class="img-responsive" alt="Image"></td>
+            <td><img src="<?= base_url();?>assets/user/images/imagenes/perros/<?=$key['mas_id']?>.jpg" class="img-responsive" alt="Image" width="100"></td>
             <td><a href="" title="Editar"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> <a href="" title="Eliminar"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
           </tr>
         <?php $num++; } ?>

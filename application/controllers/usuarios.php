@@ -13,6 +13,7 @@ class Usuarios extends CI_Controller {
 	public function index()
 	{
 		$this->load->view('usuario/layers/header');
+		$this->load->view('usuario/layers/slider');
 		$this->load->view('usuario/layers/menu');
 		$this->load->view('usuario/layers/inicio');
 		$this->load->view('usuario/layers/footer');	
@@ -289,26 +290,6 @@ class Usuarios extends CI_Controller {
 
 	public function addusuario()
 	{
-		$mi_imagen_perfil = 'imagen_usuario';
-        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perfil';
-        $config['file_name'] = "imagen_usuario";
-        $config['allowed_types'] = "gif|jpg|jpeg|png";
-        $config['max_size'] = "50000";
-        $config['max_width'] = "2000";
-        $config['max_height'] = "2000";
-
-		$this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload($mi_imagen_perfil)) {
-            //*** ocurrio un error
-            $data['uploadError'] = $this->upload->display_errors();
-            echo $this->upload->display_errors();
-            return;
-        }else{
-
-        $data['uploadSuccess'] = $this->upload->data();
-		}
-
 		if(!empty($_POST)) {
 			
 			$data = array(
@@ -319,7 +300,6 @@ class Usuarios extends CI_Controller {
 				'us_tel_cel'=> $this->input->post('tel_cel'),
 				'us_email'=> $this->input->post('email'),
 				'us_password'=> $this->input->post('password'),
-				'us_img'=>$mi_imagen_perfil,
 				'us_dom_calle'=> $this->input->post('dom_calle'),
 				'us_dom_localidad'=> $this->input->post('localidad'),
 				'us_dom_municipio'=> $this->input->post('municipio'),
@@ -327,7 +307,36 @@ class Usuarios extends CI_Controller {
 				
 				);
 		}
-		if($this->usuarios_model->insertar_usuario($data))
+		$this->usuarios_model->insertar_usuario($data);
+
+		$query=$this->usuarios_model->ultimo_usuario();
+		foreach ($query as $key => $value) {
+			$id_usuario=$value;
+		}
+		$id_usuario->us_id;
+
+		$mi_imagen = 'imagen_usuario';
+        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perfil';
+        $config['file_name'] = $id_usuario->us_id;
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+
+		$this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_imagen)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        }else{
+
+        $data['uploadSuccess'] = $this->upload->data();
+		}	
+
+
+
 		redirect('usuarios/reservar');
 	}
 
@@ -470,26 +479,6 @@ class Usuarios extends CI_Controller {
 
 	public function addmascota()
 	{
-		$mi_imagen = 'imagen_perro';
-        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perros';
-        $config['file_name'] = "imagen_perro";
-        $config['allowed_types'] = "gif|jpg|jpeg|png";
-        $config['max_size'] = "50000";
-        $config['max_width'] = "2000";
-        $config['max_height'] = "2000";
-
-	$this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload($mi_imagen)) {
-            //*** ocurrio un error
-            $data['uploadError'] = $this->upload->display_errors();
-            echo $this->upload->display_errors();
-            return;
-        }else{
-
-        $data['uploadSuccess'] = $this->upload->data();
-	}
-
 		if(!empty($_POST)) {
 			$data = array(
 				'mas_nombre'=> $this->input->post('nombre_mascota'),
@@ -503,12 +492,35 @@ class Usuarios extends CI_Controller {
 				'mas_agresivo'=> $this->input->post('agresivo_mascota'),
 				'mas_medicamento'=> $this->input->post('medicamento_mascota'),
 				'mas_observaciones'=> $this->input->post('observaciones_mascota'),
-				'mas_img'=>$mi_imagen,
 				'mas_id_usuario'=> $this->input->post('id_usuario')
 				
 				);
 		}
-		if($this->usuarios_model->insertar_mascota($data))
+		$this->usuarios_model->insertar_mascota($data);
+
+		$query=$this->usuarios_model->ultima_mascota();
+		foreach ($query as $key => $value) {
+			$id_mascota=$value;
+		}
+		$mi_imagen = 'imagen_perro';
+        $config['upload_path'] = APPPATH . '..\assets\user\images\imagenes\perros';
+        $config['file_name'] = $id_mascota->mas_id;
+        $config['allowed_types'] = "gif|jpg|jpeg|png";
+        $config['max_size'] = "50000";
+        $config['max_width'] = "2000";
+        $config['max_height'] = "2000";
+
+		$this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($mi_imagen)) {
+            //*** ocurrio un error
+            $data['uploadError'] = $this->upload->display_errors();
+            echo $this->upload->display_errors();
+            return;
+        }else{
+
+        $data['uploadSuccess'] = $this->upload->data();
+		}	
 		redirect('usuarios/reservar');
 	}
 

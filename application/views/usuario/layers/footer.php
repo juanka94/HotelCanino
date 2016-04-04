@@ -2,12 +2,10 @@
     <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
       <div class="container text-center">
         <div class="footer-logo">
-          <a href="index.html"><img class="img-responsive" src="images/logo.png" alt=""></a>
+          <a href="index.html"><img class="img-responsive" src="<?= base_url() ?>assets/user/images/imagenes/logos/logo.png" alt="" ></a>
         </div>
         <div class="social-icons">
           <ul>
-            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
-            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li> 
             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
             <li><a class="linkedin" href="#"><i class="fa fa-youtube"></i></a></li>
           </ul>
